@@ -1,23 +1,582 @@
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+  --ink: #402a35;
+  --muted: #765e6a;
+
+  --cream: #fff8fb;
+  --paper: #fffefe;
+
+  --matcha: #dfe8cf;
+  --deep: #7d3e58;
+
+  --peach: #f7bfd0;
+  --line: #efd9e4;
+
+  --violet: #ddd5f6;
+  --blush: #fbe1ea;
+  --rose: #c86486;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffafd 0%,
+      #fff5f9 48%,
+      #fdf8ff 100%
+    );
+
+  color: var(--ink);
+
+  font-family: "DM Sans", Arial, sans-serif;
+
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.skip-link {
+  position: absolute;
+
+  top: -100px;
+  left: 1rem;
+
+  z-index: 1000;
+
+  padding: 0.7rem 1rem;
+
+  background: var(--ink);
+  color: white;
+
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: min(1100px, calc(100% - 2rem));
+
+  margin: 0 auto;
+
+  padding: 1.25rem 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  color: var(--ink);
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--rose);
+}
+
+.home-link {
+  color: var(--deep);
+
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.home-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.projects-page {
+  width: min(1100px, calc(100% - 2rem));
+
+  margin: 0 auto;
+
+  padding: 3rem 0 4rem;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.projects-intro {
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+
+  color: var(--rose);
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.projects-intro h1 {
+  margin: 0;
+
+  color: var(--ink);
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: clamp(3rem, 8vw, 5rem);
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+}
+
+.page-intro {
+  max-width: 680px;
+
+  margin: 1rem 0 0;
+
+  color: var(--muted);
+
+  font-size: 1.05rem;
+}
+
+
+/* =========================================
+   FILTER CONTAINER
+========================================= */
+
+.project-filters {
+  margin-bottom: 1.5rem;
+
+  padding: 1.4rem;
+
+  border: 1px solid var(--line);
+
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.filter-group + .filter-group {
+  margin-top: 1.25rem;
+}
+
+.filter-group h2 {
+  margin: 0 0 0.55rem;
+
+  color: var(--ink);
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 0.9rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+.filter-buttons {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 0.55rem;
+}
+
+.filter-button {
+  padding: 0.6rem 0.9rem;
+
+  border: 1px solid var(--line);
+
+  border-radius: 0;
+
+  background: var(--paper);
+
+  color: var(--ink);
+
+  font-family: "DM Sans", sans-serif;
+
+  font-size: 0.85rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.filter-button:hover {
+  border-color: var(--deep);
+}
+
+.filter-button.active {
+  border-color: var(--deep);
+
+  background: var(--deep);
+
+  color: white;
+}
+
+
+/* =========================================
+   RESULTS
+========================================= */
+
+.results-message {
+  min-height: 1.4rem;
+
+  margin: 0 0 1rem;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+}
+
+
+/* =========================================
+   PROJECT GRID
+========================================= */
+
+.project-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1.25rem;
+
+  width: 100%;
+}
+
+
+/* JavaScript uses the hidden attribute */
+
+.filterable-project[hidden] {
+  display: none;
+}
+
+
+/* =========================================
+   PROJECT CARD
+========================================= */
+
+.project-card {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  border: 1px solid var(--line);
+
+  border-radius: 0;
+
+  background: var(--paper);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   PROJECT IMAGE AREA
+========================================= */
+
+.project-image {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 160px;
+
+  color: var(--ink);
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 2.4rem;
+
+  font-weight: 700;
+}
+
+.project-image.warm {
+  background: #f9e4da;
+}
+
+.project-image.green {
+  background: var(--matcha);
+}
+
+.project-image.violet {
+  background: var(--violet);
+}
+
+.project-image.navy {
+  background: #d9e2ee;
+}
+
+.project-image.pink {
+  background: var(--peach);
+}
+
+.project-image.flower {
+  background: var(--blush);
+}
+
+
+/* =========================================
+   PROJECT BODY
+========================================= */
+
+.project-body {
+  display: flex;
+
+  flex: 1;
+
+  flex-direction: column;
+
+  padding: 1.25rem;
+}
+
+.project-type {
+  margin: 0 0 0.4rem;
+
+  color: var(--rose);
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+.project-body h2 {
+  margin: 0 0 0.65rem;
+
+  color: var(--ink);
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 1.25rem;
+
+  line-height: 1.2;
+}
+
+.project-description {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 0.92rem;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.tags {
+  margin: 0.9rem 0 0;
+
+  color: var(--deep);
+
+  font-size: 0.76rem;
+
+  font-weight: 700;
+}
+
+
+/* =========================================
+   LIVE / GITHUB LINKS
+========================================= */
+
 .project-links {
   display: flex;
-  gap: 0.6rem;
-  margin-top: 1rem;
+
+  flex-wrap: wrap;
+
+  gap: 0.5rem;
+
+  margin-top: auto;
+
+  padding-top: 1rem;
 }
 
 .project-links a {
   display: inline-block;
-  padding: 0.5rem 0.8rem;
+
+  padding: 0.45rem 0.7rem;
 
   border: 1px solid var(--deep);
 
+  border-radius: 0;
+
+  background: transparent;
+
   color: var(--deep);
 
-  font-size: 0.85rem;
+  font-size: 0.78rem;
+
   font-weight: 700;
+
   text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
-.project-links a:hover {
+.project-links a:hover,
+.project-links a:focus-visible {
   background: var(--deep);
+
   color: white;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  width: min(1100px, calc(100% - 2rem));
+
+  margin: 0 auto;
+
+  padding: 1.5rem 0 2rem;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .project-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .projects-page {
+    width: calc(100% - 1.5rem);
+
+    padding: 2rem 0 3rem;
+  }
+
+  .site-header {
+    width: calc(100% - 1.5rem);
+  }
+
+  .project-filters {
+    padding: 1rem;
+  }
+
+  .filter-buttons {
+    gap: 0.4rem;
+  }
+
+  .filter-button {
+    padding: 0.55rem 0.7rem;
+
+    font-size: 0.78rem;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    min-height: 140px;
+  }
+
+  footer {
+    display: block;
+
+    width: calc(100% - 1.5rem);
+  }
+
+  footer p + p {
+    margin-top: 0.4rem;
+  }
+
 }

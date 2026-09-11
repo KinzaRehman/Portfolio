@@ -1,836 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Explore Kinza Rehman's client, passion, portfolio, and analytics projects built with JavaScript, Python, HTML, CSS, Tableau, and more."
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Kinza Rehman's software engineering, passion, and data analytics projects built with HTML, CSS, JavaScript, Tableau, and more.">
   <title>Projects | Kinza Rehman</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/projects.css">
 
-  <!-- Projects JavaScript -->
+  <!-- JavaScript -->
   <script src="js/project.js" defer></script>
 </head>
 
-
 <body>
+  <a class="skip-link" href="#project-results">Skip to projects</a>
 
-  <!-- Accessibility -->
-  <a class="skip-link" href="#project-results">
-    Skip to projects
-  </a>
-
-
-  <!-- HEADER -->
   <header class="site-header">
-
-    <a class="logo" href="index.html">
-      KR<span>.</span>
-    </a>
-
-    <a class="text-link" href="index.html">
-      ← Home
-    </a>
-
+    <a class="logo" href="index.html">KR<span>.</span></a>
+    <a class="home-link" href="index.html">← Home</a>
   </header>
 
+  <main class="projects-page">
 
-  <main class="page projects-page">
-
-    <!-- PAGE INTRO -->
+    <!-- PROJECT INTRO -->
     <section class="projects-intro">
-
-      <p class="eyebrow">
-        My Work
-      </p>
-
-      <h1>
-        Projects
-      </h1>
-
-      <p class="page-intro">
-        Explore my work across software engineering, client development,
-        passion projects, portfolio projects, and data analytics.
-      </p>
-
+      <p class="eyebrow">My Work</p>
+      <h1>Projects</h1>
+      <p class="page-intro">Explore my work across software engineering, passion projects, and data analytics.</p>
     </section>
 
-
-    <!-- =========================
-         PROJECT FILTERS
-    ========================== -->
-
-    <section
-      class="project-filters"
-      aria-label="Project filters"
-    >
-
-
-      <!-- PROJECT TYPE -->
+    <!-- FILTERS -->
+    <section class="project-filters" aria-label="Project filters">
 
       <div class="filter-group">
-
         <h2>Project Type</h2>
-
-        <div
-          class="filter-buttons"
-          data-filter-group="type"
-        >
-
-          <button
-            class="filter-button active"
-            type="button"
-            data-filter="all"
-            aria-pressed="true"
-          >
-            All Projects
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="client"
-            aria-pressed="false"
-          >
-            Client
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="passion"
-            aria-pressed="false"
-          >
-            Passion
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="portfolio"
-            aria-pressed="false"
-          >
-            Portfolio
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="analytics"
-            aria-pressed="false"
-          >
-            Analytics
-          </button>
-
+        <div class="filter-buttons" data-filter-group="type">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All Projects</button>
+          <button class="filter-button" type="button" data-filter="swe" aria-pressed="false">SWE</button>
+          <button class="filter-button" type="button" data-filter="passion" aria-pressed="false">Passion</button>
+          <button class="filter-button" type="button" data-filter="analytics" aria-pressed="false">Analytics</button>
         </div>
-
       </div>
 
-
-      <!-- LANGUAGE -->
-
       <div class="filter-group">
-
         <h2>Language</h2>
-
-        <div
-          class="filter-buttons"
-          data-filter-group="language"
-        >
-
-          <button
-            class="filter-button active"
-            type="button"
-            data-filter="all"
-            aria-pressed="true"
-          >
-            All Languages
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="javascript"
-            aria-pressed="false"
-          >
-            JavaScript
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="python"
-            aria-pressed="false"
-          >
-            Python
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="html"
-            aria-pressed="false"
-          >
-            HTML
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="css"
-            aria-pressed="false"
-          >
-            CSS
-          </button>
-
+        <div class="filter-buttons" data-filter-group="language">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All Languages</button>
+          <button class="filter-button" type="button" data-filter="javascript" aria-pressed="false">JavaScript</button>
+          <button class="filter-button" type="button" data-filter="html" aria-pressed="false">HTML</button>
+          <button class="filter-button" type="button" data-filter="css" aria-pressed="false">CSS</button>
         </div>
-
       </div>
-
-
-      <!-- ANALYTICS -->
 
       <div class="filter-group">
-
         <h2>Analytics</h2>
-
-        <div
-          class="filter-buttons"
-          data-filter-group="analytics"
-        >
-
-          <button
-            class="filter-button active"
-            type="button"
-            data-filter="all"
-            aria-pressed="true"
-          >
-            All Data
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="tableau"
-            aria-pressed="false"
-          >
-            Tableau
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="presentation"
-            aria-pressed="false"
-          >
-            Presentations
-          </button>
-
-          <button
-            class="filter-button"
-            type="button"
-            data-filter="one-pager"
-            aria-pressed="false"
-          >
-            One Pagers
-          </button>
-
+        <div class="filter-buttons" data-filter-group="analytics">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All Data</button>
+          <button class="filter-button" type="button" data-filter="tableau" aria-pressed="false">Tableau</button>
         </div>
-
       </div>
 
     </section>
 
+    <p class="results-message" id="results-message" aria-live="polite"></p>
 
-    <!-- FILTER RESULTS MESSAGE -->
+    <!-- PROJECTS -->
+    <section class="project-grid" id="project-results" aria-label="Filtered projects">
 
-    <p
-      class="results-message"
-      id="results-message"
-      aria-live="polite"
-    ></p>
-
-
-    <!-- =========================
-         PROJECT CARDS
-    ========================== -->
-
-    <section
-      class="project-grid"
-      id="project-results"
-      aria-label="Filtered projects"
-    >
-
-
-      <!-- =====================
-           IZMA'S CREATIONS
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="client"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image warm">
-          IC
-        </div>
-
+      <!-- BOSTON BARBER -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image warm">BB</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Client Project
-          </p>
-
-          <h2>
-            Izma’s Creations
-          </h2>
-
-          <p class="project-description">
-            A mobile-friendly halal home bakery website with menus,
-            packages, and text-based booking.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Boston Barber</h2>
+          <p class="project-description">A responsive barber shop website featuring service information, pricing, navigation, and customer calls to action.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://boston-barber.netlify.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-2-assignments/boston-barber_with_css" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           ANDREW MAKRIDES
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="client portfolio"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image green">
-          AM
-        </div>
-
+      <!-- MAINE LOBSTER -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image green">ML</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Client · Portfolio
-          </p>
-
-          <h2>
-            Andrew Makrides
-          </h2>
-
-          <p class="project-description">
-            A professional accounting portfolio designed to build
-            credibility and professional connections.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Maine Lobster</h2>
+          <p class="project-description">A responsive seafood business website built to practice structured layouts, responsive design, and front-end development.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://maine-lobster.netlify.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-2-assignments/maine-lobster" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           CREATIVE ROOTS
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="client"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image navy">
-          PK
-        </div>
-
+      <!-- MAINE PROPERTY -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image violet">MP</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Client Project
-          </p>
-
-          <h2>
-            Creative Roots
-          </h2>
-
-          <p class="project-description">
-            A culturally inspired service website connecting artwork,
-            henna, food, and charitable causes.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Maine Property</h2>
+          <p class="project-description">A responsive real estate website concept showcasing property content through a clean front-end layout.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-three-green.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-3-assignments/maine-property" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           TO-DO LIST
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="passion"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image pink">
-          ✓
-        </div>
-
+      <!-- NYC BAGELS -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image pink">NY</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Passion Project
-          </p>
-
-          <h2>
-            Strawberry Matcha To-Do List
-          </h2>
-
-          <p class="project-description">
-            An interactive task manager with editing, counters,
-            completion tracking, validation, and reset functionality.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>NYC Bagels</h2>
+          <p class="project-description">A responsive New York bagel shop website built with semantic HTML, CSS layouts, and JavaScript.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="https://kinzarehman.github.io/Ktodo-list/"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="https://github.com/KinzaRehman/Ktodo-list"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-tei5.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-2-assignments/nyc-bagles" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           FLOWERS NYC
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="passion"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image flower">
-          ✿
-        </div>
-
+      <!-- PHILLY RESTAURANT -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image warm">PR</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Passion Project
-          </p>
-
-          <h2>
-            Seasons of Flowers in NYC
-          </h2>
-
-          <p class="project-description">
-            A month-by-month guide for discovering seasonal flowers
-            around New York City.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Philly Restaurant</h2>
+          <p class="project-description">A responsive restaurant website focused on navigation, content hierarchy, mobile layouts, and front-end interaction.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-al7q.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-2-assignments/philly-resturant" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           PAWPAL
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="passion"
-        data-languages="python"
-        data-analytics=""
-      >
-
-        <div class="project-image violet">
-          AI
-        </div>
-
+      <!-- PHILLY WATER ICE -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image green">PW</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Passion Project
-          </p>
-
-          <h2>
-            PawPal Applied AI
-          </h2>
-
-          <p class="project-description">
-            An applied AI project designed to support pet owners
-            with useful guidance.
-          </p>
-
-          <p class="tags">
-            Python · Streamlit · AI
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Philly Water Ice</h2>
+          <p class="project-description">A responsive small-business website built to practice front-end layouts, styling, and interactive functionality.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-too5.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-2-assignments/philly-water" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           PORTFOLIO
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="portfolio"
-        data-languages="html css javascript"
-        data-analytics=""
-      >
-
-        <div class="project-image navy">
-          KR
-        </div>
-
+      <!-- JWLI -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image violet">JW</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Portfolio Project
-          </p>
-
-          <h2>
-            Software Engineering Portfolio
-          </h2>
-
-          <p class="project-description">
-            This responsive portfolio highlighting my work,
-            experience, technical skills, and software engineering growth.
-          </p>
-
-          <p class="tags">
-            HTML · CSS · JavaScript
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>JWLI</h2>
+          <p class="project-description">A responsive front-end recreation focused on translating a structured design into semantic HTML and responsive CSS.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a href="index.html">
-              Live ↗
-            </a>
-
-            <a
-              href="https://github.com/KinzaRehman/Portfolio"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-7xt8.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-3-assignments/jwli" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           MUSIC RECOMMENDER
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="passion"
-        data-languages="python"
-        data-analytics=""
-      >
-
-        <div class="project-image green">
-          ♫
-        </div>
-
+      <!-- LEVEL GROUND -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image navy">LG</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Passion Project
-          </p>
-
-          <h2>
-            Music Recommender
-          </h2>
-
-          <p class="project-description">
-            A recommendation project that uses listening preferences
-            to suggest music.
-          </p>
-
-          <p class="tags">
-            Python · Data · AI
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Level Ground Mixed Martial Arts</h2>
+          <p class="project-description">A responsive martial arts organization website built with semantic structure and adaptive front-end layouts.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-zlt2.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-3-assignments/level-ground" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
-
       </article>
 
-
-      <!-- =====================
-           ANALYTICS PLACEHOLDER
-      ====================== -->
-
-      <article
-        class="project-card filterable-project"
-        data-type="analytics"
-        data-languages=""
-        data-analytics="tableau"
-      >
-
-        <div class="project-image warm">
-          DA
-        </div>
-
+      <!-- LINE UP -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image flower">LU</div>
         <div class="project-body">
-
-          <p class="project-type">
-            Analytics Project
-          </p>
-
-          <h2>
-            Tableau Analytics
-          </h2>
-
-          <p class="project-description">
-            Data visualization and analytics work created to communicate
-            insights and support business decisions.
-          </p>
-
-          <p class="tags">
-            Tableau · Data Analytics
-          </p>
-
+          <p class="project-type">SWE Project</p>
+          <h2>Line Up</h2>
+          <p class="project-description">A responsive landing page focused on layout, typography, responsive behavior, and front-end implementation.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
           <div class="project-links">
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              Live ↗
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub ↗
-            </a>
-
+            <a href="https://rs-r3z3-git-main-kinzarehmans-projects.vercel.app/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week-3-assignments/Line_up" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-
         </div>
+      </article>
 
+      <!-- ROCK PAPER SCISSORS -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image pink">RPS</div>
+        <div class="project-body">
+          <p class="project-type">SWE Project</p>
+          <h2>Rock Paper Scissors</h2>
+          <p class="project-description">An interactive browser game using JavaScript to handle player choices, game logic, results, and score tracking.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
+          <div class="project-links">
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week%205/Class/rock_paper_scissors" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SLOT MACHINE -->
+      <article class="project-card filterable-project" data-type="swe" data-languages="html css javascript" data-analytics="">
+        <div class="project-image violet">777</div>
+        <div class="project-body">
+          <p class="project-type">SWE Project</p>
+          <h2>Slot Machine</h2>
+          <p class="project-description">An interactive JavaScript game featuring reels, betting logic, balance updates, and randomized outcomes.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
+          <div class="project-links">
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week%205/Assignments/Slot%20Machine" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- FLOWERS OF NYC -->
+      <article class="project-card filterable-project" data-type="passion" data-languages="html css javascript" data-analytics="">
+        <div class="project-image flower">✿</div>
+        <div class="project-body">
+          <p class="project-type">Passion Project</p>
+          <h2>Flowers of NYC</h2>
+          <p class="project-description">An interactive seasonal flower project exploring which flowers are in season throughout different months of the year.</p>
+          <p class="tags">HTML · CSS · JavaScript</p>
+          <div class="project-links">
+            <a href="https://github.com/KinzaRehman/RS/tree/main/Week%204/Week4-assignments/Date%20%26%20guess" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- TO-DO LIST -->
+      <article class="project-card filterable-project" data-type="passion" data-languages="html css javascript" data-analytics="">
+        <div class="project-image pink">✓</div>
+        <div class="project-body">
+          <p class="project-type">Passion Project</p>
+          <h2>Strawberry Matcha To-Do List</h2>
+          <p class="project-description">An interactive task manager with task creation, editing, deletion, completion tracking, validation, and live counters.</p>
+          <p class="tags">HTML · CSS · JavaScript · DOM</p>
+          <div class="project-links">
+            <a href="https://kinzarehman.github.io/Ktodo-list/" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/KinzaRehman/Ktodo-list" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 75 DAYS OF IMPROVEMENT -->
+      <article class="project-card filterable-project" data-type="passion" data-languages="" data-analytics="">
+        <div class="project-image green">75</div>
+        <div class="project-body">
+          <p class="project-type">Passion Project</p>
+          <h2>75 Days of Improvement</h2>
+          <p class="project-description">A personal software engineering and AI learning challenge documenting consistent technical growth and project work.</p>
+          <p class="tags">AI · Software Engineering · Learning</p>
+          <div class="project-links">
+            <a href="https://github.com/KinzaRehman/75_days_improvement" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MARKETING AUDIENCE ANALYTICS -->
+      <article class="project-card filterable-project" data-type="analytics" data-languages="" data-analytics="tableau">
+        <div class="project-image warm">MA</div>
+        <div class="project-body">
+          <p class="project-type">Analytics · Tableau</p>
+          <h2>Marketing Audience Analytics</h2>
+          <p class="project-description">An interactive Tableau dashboard exploring marketing audience data through visual analysis and business-focused insights.</p>
+          <p class="tags">Tableau · Data Visualization · Marketing Analytics</p>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/kinza.rehman/viz/Audienceanalysis_17165614954470/Dashboard1" target="_blank" rel="noopener">View Dashboard ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SAN FRANCISCO CRIME ANALYSIS -->
+      <article class="project-card filterable-project" data-type="analytics" data-languages="" data-analytics="tableau">
+        <div class="project-image navy">SF</div>
+        <div class="project-body">
+          <p class="project-type">Analytics · Tableau</p>
+          <h2>San Francisco Crime Analysis</h2>
+          <p class="project-description">A Tableau visualization project analyzing San Francisco crime data from 2019 through 2023.</p>
+          <p class="tags">Tableau · Data Visualization · Crime Data</p>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/kinza.rehman/viz/SanFrancisco2019-2023/Dashboard1" target="_blank" rel="noopener">View Dashboard ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CYCLISTIC -->
+      <article class="project-card filterable-project" data-type="analytics" data-languages="" data-analytics="tableau">
+        <div class="project-image green">CY</div>
+        <div class="project-body">
+          <p class="project-type">Analytics · Tableau</p>
+          <h2>Cyclistic</h2>
+          <p class="project-description">A Tableau analytics project exploring Cyclistic data through interactive visualizations and comparative insights.</p>
+          <p class="tags">Tableau · Data Analytics · Data Visualization</p>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/kinza.rehman/viz/Cyclistic_17152820904700/Dashboard1" target="_blank" rel="noopener">View Dashboard ↗</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MARKETING CREATIVE ANALYTICS -->
+      <article class="project-card filterable-project" data-type="analytics" data-languages="" data-analytics="tableau">
+        <div class="project-image violet">MC</div>
+        <div class="project-body">
+          <p class="project-type">Analytics · Tableau</p>
+          <h2>Marketing Creative Analytics</h2>
+          <p class="project-description">An interactive Tableau dashboard analyzing marketing creative performance and presenting visual insights across campaign data.</p>
+          <p class="tags">Tableau · Marketing Analytics · Data Visualization</p>
+          <div class="project-links">
+            <a href="https://public.tableau.com/app/profile/kinza.rehman/viz/creativeanalysis/Dashboard3" target="_blank" rel="noopener">View Dashboard ↗</a>
+          </div>
+        </div>
       </article>
 
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-
   <footer>
-
-    <p>
-      © <span id="year"></span> Kinza Rehman
-    </p>
-
-    <p>
-      Designed and built with care in New York.
-    </p>
-
+    <p>© <span id="year"></span> Kinza Rehman</p>
+    <p>Designed and built with care in New York</p>
   </footer>
 
 </body>
-
 </html>
