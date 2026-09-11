@@ -1,0 +1,23 @@
+.project-links {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.project-links a {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+
+  border: 1px solid var(--deep);
+
+  color: var(--deep);
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  background: var(--deep);
+  color: white;
+}

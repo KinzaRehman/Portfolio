@@ -21,10 +21,47 @@ body {
 }
 
 /* Top navigation */
+/* Professional links beside name */
+
+.resume-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.resume-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0;
+  border: none;
+  background: none;
+
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.resume-links img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.resume-links a:hover {
+  color: var(--mint);
+  text-decoration: underline;
+}
 
 .resume-nav {
   display: flex;
   justify-content: space-between;
+  flex: column;
   max-width: 960px;
   margin: 0 auto;
   padding: 1.2rem 1.5rem;
