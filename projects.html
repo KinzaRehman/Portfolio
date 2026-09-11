@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Kinza Rehman's client, passion, and portfolio projects built with JavaScript, Python, HTML, and CSS.">
+  <title>Projects | Kinza Rehman</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#project-results">Skip to projects</a>
+  <header class="site-header"><a class="logo" href="index.html">KR<span>.</span></a><a class="text-link" href="index.html">← Home</a></header>
+  <main class="page projects-page">
+    <p class="eyebrow">My work</p><h1>Projects</h1>
+    <p class="page-intro">Filter my work by project type or the languages used to build it.</p>
+    <section class="project-filters" aria-label="Project filters">
+      <div class="filter-group"><h2>Project type</h2><div class="filter-buttons" data-filter-group="type">
+        <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All projects</button>
+        <button class="filter-button" type="button" data-filter="client" aria-pressed="false">Client</button>
+        <button class="filter-button" type="button" data-filter="passion" aria-pressed="false">Passion</button>
+        <button class="filter-button" type="button" data-filter="portfolio" aria-pressed="false">Portfolio</button>
+      </div></div>
+      <div class="filter-group"><h2>Language</h2><div class="filter-buttons" data-filter-group="language">
+        <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All languages</button>
+        <button class="filter-button" type="button" data-filter="javascript" aria-pressed="false">JavaScript</button>
+        <button class="filter-button" type="button" data-filter="python" aria-pressed="false">Python</button>
+        <button class="filter-button" type="button" data-filter="html" aria-pressed="false">HTML</button>
+        <button class="filter-button" type="button" data-filter="css" aria-pressed="false">CSS</button>
+      </div></div>
+    </section>
+    <p class="results-message" id="results-message" aria-live="polite"></p>
+    <section class="project-grid" id="project-results" aria-label="Filtered projects">
+      <article class="project-card filterable-project" data-type="client" data-languages="html css javascript"><div class="project-image warm">IC</div><div class="project-body"><p class="project-type">Client project</p><h2>Izma’s Creations</h2><p>A mobile-friendly halal home bakery website with menus, packages, and text-based booking.</p><p class="tags">HTML · CSS · JavaScript</p><a href="#">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="client portfolio" data-languages="html css javascript"><div class="project-image green">AM</div><div class="project-body"><p class="project-type">Client · Portfolio</p><h2>Andrew Makrides</h2><p>A professional accounting portfolio designed to build credibility and connections.</p><p class="tags">HTML · CSS · JavaScript</p><a href="#">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="client" data-languages="html css javascript"><div class="project-image navy">PK</div><div class="project-body"><p class="project-type">Client project</p><h2>Creative Roots</h2><p>A culturally inspired service site connecting artwork, henna, food, and charitable causes.</p><p class="tags">HTML · CSS · JavaScript</p><a href="#">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="passion" data-languages="html css javascript"><div class="project-image pink">✓</div><div class="project-body"><p class="project-type">Passion project</p><h2>Strawberry Matcha To-Do List</h2><p>An interactive task manager with editing, counters, and completion tracking.</p><p class="tags">HTML · CSS · JavaScript</p><a href="https://kinzarehman.github.io/Ktodo-list/" target="_blank" rel="noopener">View live site →</a></div></article>
+      <article class="project-card filterable-project" data-type="passion" data-languages="html css javascript"><div class="project-image flower">✿</div><div class="project-body"><p class="project-type">Passion project</p><h2>Seasons of Flowers in NYC</h2><p>A month-by-month guide for discovering seasonal flowers around New York City.</p><p class="tags">HTML · CSS · JavaScript</p><a href="#">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="passion" data-languages="python"><div class="project-image violet">AI</div><div class="project-body"><p class="project-type">Passion project</p><h2>PawPal Applied AI</h2><p>An applied AI project designed to support pet owners with useful guidance.</p><p class="tags">Python · Streamlit · AI</p><a href="#">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="portfolio" data-languages="html css javascript"><div class="project-image navy">KR</div><div class="project-body"><p class="project-type">Portfolio project</p><h2>Software Engineering Portfolio</h2><p>This responsive portfolio highlighting my work, experience, and growth.</p><p class="tags">HTML · CSS · JavaScript</p><a href="index.html">View project →</a></div></article>
+      <article class="project-card filterable-project" data-type="passion" data-languages="python"><div class="project-image green">♫</div><div class="project-body"><p class="project-type">Passion project</p><h2>Music Recommender</h2><p>A recommendation project that uses listening preferences to suggest music.</p><p class="tags">Python · Data · AI</p><a href="#">View project →</a></div></article>
+    </section>
+  </main>
+  <footer><p>© <span id="year"></span> Kinza Rehman</p><p>Designed and built with care in New York.</p></footer>
+</body>
+</html>
