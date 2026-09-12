@@ -848,72 +848,34 @@ footer {
     height: 190px;
   }
 }
-/* =========================================
-   LIVE PROJECT PREVIEWS
-========================================= */
 
 /* =========================================
-   DESKTOP / LAPTOP WEBSITE PREVIEW
+   LIVE WEBSITE PREVIEW — CROPPED DESKTOP
 ========================================= */
 
 .project-preview {
   position: relative;
   width: 100%;
-  height: 360px;
+  aspect-ratio: 16 / 7;
   overflow: hidden;
-  background: #fff;
-  border-bottom: 1px solid var(--line);
+  background: transparent;
+  border-bottom: 1px solid var(--ink);
 }
 
-/*
-  Pretend the website is being viewed
-  on a 1440px-wide laptop screen.
-*/
 .project-preview iframe {
   position: absolute;
   top: 0;
   left: 0;
 
   width: 1440px;
-  height: 900px;
+  height: 630px;
 
   border: 0;
-  background: #fff;
+  margin: 0;
+  padding: 0;
 
   transform-origin: top left;
-
-  /*
-    Change this depending on your card width.
-    Example: 0.36 makes 1440px appear ~518px wide.
-  */
-  transform: scale(0.36);
 }
-/* Visitors can scroll/interact directly inside the website */
-.project-preview iframe:hover {
-  cursor: auto;
-}
-
-/* Placeholder for projects where a live URL still needs to be added */
-.project-preview-missing {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background: var(--blush);
-  text-align: center;
-}
-
-.project-preview-missing p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-/* Keep project cards clean */
-.project-card {
-  overflow: hidden;
-}
-
 /* Mobile */
 @media (max-width: 768px) {
   .project-preview {

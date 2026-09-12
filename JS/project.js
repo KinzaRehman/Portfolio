@@ -242,8 +242,8 @@ function resizeProjectPreviews() {
 
     if (!iframe) return;
 
-    const laptopWidth = 1440;
-    const scale = preview.clientWidth / laptopWidth;
+    const desktopWidth = 1440;
+    const scale = preview.clientWidth / desktopWidth;
 
     iframe.style.transform = `scale(${scale})`;
   });
