@@ -233,3 +233,21 @@ if (year) {
 // ==========================================
 
 filterProjects();
+
+function resizeProjectPreviews() {
+  const previews = document.querySelectorAll(".project-preview");
+
+  previews.forEach((preview) => {
+    const iframe = preview.querySelector("iframe");
+
+    if (!iframe) return;
+
+    const laptopWidth = 1440;
+    const scale = preview.clientWidth / laptopWidth;
+
+    iframe.style.transform = `scale(${scale})`;
+  });
+}
+
+window.addEventListener("load", resizeProjectPreviews);
+window.addEventListener("resize", resizeProjectPreviews);
