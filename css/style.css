@@ -4,6 +4,61 @@ html{scroll-behavior:smooth}
 body{margin:0;background:linear-gradient(180deg,#fffafd 0%,#fff5f9 48%,#fdf8ff 100%);color:var(--ink);font-family:"DM Sans",Arial,sans-serif;line-height:1.6}
 h1,h2,h3,.logo{font-family:"Space Grotesk",Arial,sans-serif;line-height:1.08}
 a{color:inherit}
+.social-strip {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.social-strip h2 {
+  margin-bottom: 24px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: var(--paper);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--deep);
+}
+
+.social-links img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 500px) {
+  .social-links {
+    gap: 14px;
+  }
+
+  .social-links a {
+    width: 54px;
+    height: 54px;
+  }
+
+  .social-links img {
+    width: 30px;
+    height: 30px;
+  }
+}
 .skip-link{position:absolute;left:-999px}
 .skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.75rem;z-index:20}
 .site-header{max-width:1200px;margin:auto;padding:1.25rem 5%;display:flex;align-items:center;justify-content:space-between}
