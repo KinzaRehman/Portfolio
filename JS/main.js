@@ -1,133 +1,68 @@
-// Mobile navigation
-const menuButton = document.querySelector(".menu-button");
-const navigation = document.querySelector("#site-nav");
+// =========================================
+// RESPONSIVE DESKTOP WEBSITE PREVIEWS
+// =========================================
 
-if (menuButton && navigation) {
-  menuButton.addEventListener("click", function () {
-    const isOpen = navigation.classList.toggle("open");
+function resizeProjectPreviews() {
 
-    menuButton.setAttribute("aria-expanded", isOpen);
-  });
+  const previews =
+    document.querySelectorAll(".project-preview");
 
-  navigation.querySelectorAll("a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      navigation.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-    });
-  });
-}
+  previews.forEach(function (preview) {
 
+    const iframe =
+      preview.querySelector("iframe");
 
-// Automatically display the current year
-const yearElements = document.querySelectorAll("#year");
-
-yearElements.forEach(function (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
-});
-
-
-// Project filtering
-const projects = document.querySelectorAll(".filterable-project");
-const filterGroups = document.querySelectorAll("[data-filter-group]");
-const resultsMessage = document.querySelector("#results-message");
-
-if (projects.length > 0 && filterGroups.length > 0) {
-  const selectedFilters = {
-    type: "all",
-    language: "all"
-  };
-
-  // Read a project type from the URL.
-  // Example: projects.html?type=client
-  const urlParameters = new URLSearchParams(window.location.search);
-  const requestedType = urlParameters.get("type");
-
-  const validProjectTypes = [
-    "client",
-    "passion",
-    "portfolio"
-  ];
-
-  if (validProjectTypes.includes(requestedType)) {
-    selectedFilters.type = requestedType;
-  }
-
-
-  // Update the appearance of the selected buttons
-  function updateFilterButtons() {
-    filterGroups.forEach(function (group) {
-      const groupName = group.dataset.filterGroup;
-      const buttons = group.querySelectorAll(".filter-button");
-
-      buttons.forEach(function (button) {
-        const isSelected =
-          button.dataset.filter === selectedFilters[groupName];
-
-        button.classList.toggle("active", isSelected);
-        button.setAttribute("aria-pressed", isSelected);
-      });
-    });
-  }
-
-
-  // Display projects that match both selected filters
-  function filterProjects() {
-    let visibleProjectCount = 0;
-
-    projects.forEach(function (project) {
-      const projectTypes = project.dataset.type.split(" ");
-      const projectLanguages = project.dataset.languages.split(" ");
-
-      const matchesProjectType =
-        selectedFilters.type === "all" ||
-        projectTypes.includes(selectedFilters.type);
-
-      const matchesLanguage =
-        selectedFilters.language === "all" ||
-        projectLanguages.includes(selectedFilters.language);
-
-      const shouldDisplayProject =
-        matchesProjectType && matchesLanguage;
-
-      project.hidden = !shouldDisplayProject;
-
-      if (shouldDisplayProject) {
-        visibleProjectCount++;
-      }
-    });
-
-    if (resultsMessage) {
-      const projectWord =
-        visibleProjectCount === 1 ? "project" : "projects";
-
-      resultsMessage.textContent =
-        `${visibleProjectCount} ${projectWord} shown`;
+    if (!iframe) {
+      return;
     }
-  }
 
+    /*
+      The embedded website always renders
+      as a 1440 × 810 desktop browser.
+    */
 
-  // Listen for clicks on the filter buttons
-  filterGroups.forEach(function (group) {
-    group.addEventListener("click", function (event) {
-      const selectedButton =
-        event.target.closest(".filter-button");
+    const desktopWidth = 1440;
+    const desktopHeight = 810;
 
-      if (!selectedButton) {
-        return;
-      }
+    /*
+      Find the width available inside
+      the portfolio card.
+    */
 
-      const groupName = group.dataset.filterGroup;
-      const selectedValue = selectedButton.dataset.filter;
+    const availableWidth =
+      preview.clientWidth;
 
-      selectedFilters[groupName] = selectedValue;
+    /*
+      Scale the desktop website proportionally
+      to exactly fit the card width.
+    */
 
-      updateFilterButtons();
-      filterProjects();
-    });
+    const scale =
+      availableWidth / desktopWidth;
+
+    iframe.style.width =
+      `${desktopWidth}px`;
+
+    iframe.style.height =
+      `${desktopHeight}px`;
+
+    iframe.style.transform =
+      `scale(${scale})`;
+
   });
 
-
-  // Run the filters when the page first loads
-  updateFilterButtons();
-  filterProjects();
 }
+
+
+// Resize after everything loads
+window.addEventListener(
+  "load",
+  resizeProjectPreviews
+);
+
+
+// Resize when browser changes size
+window.addEventListener(
+  "resize",
+  resizeProjectPreviews
+);
