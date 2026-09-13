@@ -5,6 +5,7 @@
 :root {
   --ink: #30242b;
   --muted: #705e67;
+
   --paper: #fffaf2;
   --cream: #f8efe4;
 
@@ -62,7 +63,6 @@ body {
 
 img {
   display: block;
-
   max-width: 100%;
 }
 
@@ -84,7 +84,6 @@ h3,
 
 .skip-link {
   position: absolute;
-
   left: -9999px;
 }
 
@@ -125,8 +124,6 @@ h3,
 .logo {
   position: relative;
 
-  color: var(--ink);
-
   font-size: 1.35rem;
   font-weight: 700;
 
@@ -164,8 +161,6 @@ h3,
 }
 
 .site-header nav a {
-  color: var(--ink);
-
   font-size: 0.82rem;
   font-weight: 600;
 
@@ -222,7 +217,7 @@ h3,
 
   margin: 0 auto;
 
-  padding: 2rem 5% 2.25rem;
+  padding: 2rem 5%;
 
   display: grid;
 
@@ -256,11 +251,6 @@ h3,
   z-index: 2;
 }
 
-
-/* =========================================
-   EYEBROW
-========================================= */
-
 .eyebrow {
   margin: 0 0 0.35rem;
 
@@ -273,11 +263,6 @@ h3,
 
   text-transform: uppercase;
 }
-
-
-/* =========================================
-   HERO HEADING
-========================================= */
 
 .hero h1 {
   max-width: 700px;
@@ -305,11 +290,6 @@ h3,
   background: var(--pink);
 }
 
-
-/* =========================================
-   HERO TEXT
-========================================= */
-
 .hero-text {
   max-width: 670px;
 
@@ -333,8 +313,6 @@ h3,
   margin-top: 0.75rem;
 
   padding: 0.4rem 0.6rem;
-
-  color: var(--ink);
 
   font-size: 0.69rem;
 
@@ -423,7 +401,6 @@ h3,
 
 .button-row {
   display: flex;
-
   flex-wrap: wrap;
 
   gap: 0.5rem;
@@ -497,7 +474,6 @@ h3,
 
 .social-links {
   display: flex;
-
   flex-wrap: wrap;
 
   justify-content: center;
@@ -618,7 +594,6 @@ h3,
   overflow: hidden;
 
   display: flex;
-
   flex-direction: column;
 
   background: var(--paper);
@@ -648,30 +623,105 @@ h3,
 /* =========================================
    LIVE WEBSITE PREVIEW
 
-   IMPORTANT:
-   Container = 16:9
-   Virtual laptop = 1200 × 675
-   1200 / 675 = 16:9
+   SAME CONCEPT AS PROJECTS PAGE.
 
-   Therefore the scaled iframe fills
-   the container exactly.
+   Website is rendered at:
+   1440px × 900px
+
+   JavaScript scales the entire viewport
+   down into the card.
+========================================= */
+
+/* =========================================
+   PROJECT WEBSITE PREVIEW
 ========================================= */
 
 .project-preview {
   position: relative;
-
   width: 100%;
 
-  aspect-ratio: 16 / 9;
+  /* 1920 x 1200 = 16:10 */
+  aspect-ratio: 16 / 10;
 
   overflow: hidden;
+  flex-shrink: 0;
 
-  flex: 0 0 auto;
-
-  background: white;
-
+  background: #ffffff;
   border-bottom: 1px solid var(--line);
 }
+
+.project-preview iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /*
+    Larger virtual desktop =
+    more of the website visible
+    inside the small card.
+  */
+  width: 1920px;
+  height: 1200px;
+
+  display: block;
+
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  background: #ffffff;
+
+  transform-origin: top left;
+}
+
+
+/* Placeholder cards stay the same size */
+
+.project-preview-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #f5dfe7;
+
+  background-image:
+    radial-gradient(
+      rgba(92, 56, 80, 0.1) 1px,
+      transparent 1px
+    );
+
+  background-size: 10px 10px;
+}
+
+.placeholder-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+.placeholder-number,
+.placeholder-symbol {
+  display: block;
+
+  margin-bottom: 0.25rem;
+
+  color: var(--rose);
+
+  font-family: var(--heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.placeholder-content p {
+  margin: 0;
+
+  color: var(--plum);
+
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+/* =========================================
+   IFRAME
+========================================= */
 
 .project-preview iframe {
   position: absolute;
@@ -679,8 +729,8 @@ h3,
   top: 0;
   left: 0;
 
-  width: 1200px;
-  height: 675px;
+  width: 1440px;
+  height: 900px;
 
   display: block;
 
@@ -689,22 +739,24 @@ h3,
 
   border: 0;
 
-  background: white;
+  background: #ffffff;
 
   transform-origin: top left;
 
   /*
-    JS supplies the actual scale.
+    JavaScript replaces this scale
+    after calculating card width.
   */
+
   transform: scale(1);
 }
 
 
 /* =========================================
-   PLACEHOLDER PREVIEWS
+   PLACEHOLDER PREVIEW
 ========================================= */
 
-.placeholder-preview {
+.project-preview-placeholder {
   display: flex;
 
   align-items: center;
@@ -727,7 +779,8 @@ h3,
   text-align: center;
 }
 
-.placeholder-content span {
+.placeholder-number,
+.placeholder-symbol {
   display: block;
 
   margin-bottom: 0.25rem;
@@ -760,7 +813,6 @@ h3,
   display: flex;
 
   flex: 1;
-
   flex-direction: column;
 }
 
@@ -799,7 +851,6 @@ h3,
 
 .tags {
   margin-top: auto;
-
   margin-bottom: 0.5rem;
 
   padding-top: 0.45rem;
@@ -822,7 +873,6 @@ h3,
 
 .project-links {
   display: flex;
-
   flex-wrap: wrap;
 
   gap: 0.65rem;
@@ -847,7 +897,7 @@ h3,
 
 
 /* =========================================
-   PASSION PROJECT SECTION
+   PASSION SECTION
 ========================================= */
 
 .tinted {
@@ -944,100 +994,6 @@ footer p {
 
 
 /* =========================================
-   GENERAL PAGE
-========================================= */
-
-.page {
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  padding: 2.8rem 5%;
-}
-
-.page h1 {
-  margin: 0.25rem 0;
-
-  font-size:
-    clamp(2.6rem, 5vw, 4.8rem);
-
-  letter-spacing: -0.05em;
-}
-
-.page-intro {
-  max-width: 680px;
-
-  color: var(--muted);
-
-  font-size: 0.95rem;
-}
-
-
-/* =========================================
-   CONTACT PAGE
-========================================= */
-
-.contact-layout {
-  display: grid;
-
-  grid-template-columns:
-    0.85fr 1.15fr;
-
-  gap: 2.5rem;
-
-  align-items: start;
-}
-
-.contact-form {
-  display: grid;
-
-  gap: 0.45rem;
-
-  padding: 1.5rem;
-
-  background: var(--paper);
-
-  border: 1px solid var(--line);
-
-  box-shadow: 5px 5px 0 var(--pink);
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%;
-
-  margin-bottom: 0.5rem;
-
-  padding: 0.7rem;
-
-  color: var(--ink);
-
-  font: inherit;
-
-  background: #fffdf9;
-
-  border: 1px solid var(--line);
-
-  border-radius: 0;
-}
-
-.contact-form input:focus,
-.contact-form select:focus,
-.contact-form textarea:focus {
-  outline: 3px solid var(--pink);
-
-  outline-offset: 2px;
-}
-
-.form-note {
-  color: var(--muted);
-
-  font-size: 0.75rem;
-}
-
-
-/* =========================================
    TABLET
 ========================================= */
 
@@ -1052,7 +1008,7 @@ footer p {
 
 
 /* =========================================
-   MOBILE NAVIGATION / HERO
+   MOBILE
 ========================================= */
 
 @media (max-width: 850px) {
@@ -1113,10 +1069,6 @@ footer p {
     gap: 0.4rem;
   }
 
-  .contact-layout {
-    grid-template-columns: 1fr;
-  }
-
   .contact-banner {
     margin-right: 5%;
     margin-left: 5%;
@@ -1130,7 +1082,7 @@ footer p {
 
 
 /* =========================================
-   SINGLE COLUMN PROJECTS
+   SINGLE COLUMN
 ========================================= */
 
 @media (max-width: 650px) {
@@ -1157,13 +1109,11 @@ footer p {
 @media (max-width: 520px) {
 
   .site-header {
-    padding:
-      0.75rem 6%;
+    padding: 0.75rem 6%;
   }
 
   .hero {
-    padding:
-      1.6rem 6% 1.8rem;
+    padding: 1.6rem 6% 1.8rem;
   }
 
   .hero::before {
@@ -1188,8 +1138,7 @@ footer p {
   }
 
   .social-strip {
-    padding:
-      0.75rem 6%;
+    padding: 0.75rem 6%;
   }
 
   .social-links {
@@ -1207,8 +1156,7 @@ footer p {
   }
 
   .section {
-    padding:
-      2.1rem 6%;
+    padding: 2.1rem 6%;
   }
 
   .section-heading {
@@ -1235,8 +1183,7 @@ footer p {
   }
 
   footer {
-    padding:
-      1.1rem 6%;
+    padding: 1.1rem 6%;
 
     align-items: flex-start;
 
@@ -1264,4 +1211,86 @@ footer p {
     transition: none !important;
   }
 
+}
+/* =========================================
+   INDEX PROJECT WEBSITE PREVIEWS
+========================================= */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  min-width: 0;
+}
+
+/* Visible window */
+.project-browser {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #fff;
+  border-bottom: 1px solid var(--ink);
+}
+
+/*
+  The website is rendered at laptop size,
+  NOT at the width of the card.
+*/
+.project-browser-frame {
+  position: absolute;
+
+  width: 1440px;
+  height: 900px;
+
+  top: 0;
+  left: 0;
+
+  border: 0;
+
+  transform-origin: top left;
+
+  pointer-events: none;
+}
+
+/* Card text */
+.project-card-content {
+  padding: 14px;
+}
+
+.project-card-content h3 {
+  margin: 3px 0 7px;
+}
+
+.project-card-content p {
+  margin: 0 0 10px;
+}
+
+.project-type {
+  margin: 0 0 5px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.project-tech {
+  padding-top: 9px;
+  margin-top: 9px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.project-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.project-links a {
+  font-size: 0.78rem;
+  font-weight: 700;
 }

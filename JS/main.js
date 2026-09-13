@@ -70,6 +70,7 @@ yearElements.forEach(
 
 // =========================================
 // PROJECT FILTERING
+// Used on projects.html
 // =========================================
 
 const projects =
@@ -93,16 +94,11 @@ if (
   };
 
 
-  // =======================================
-  // READ FILTER FROM URL
-  // Example:
-  // projects.html?type=passion
-  // =======================================
-
   const urlParameters =
     new URLSearchParams(
       window.location.search
     );
+
 
   const requestedType =
     urlParameters.get("type");
@@ -127,10 +123,6 @@ if (
   }
 
 
-  // =======================================
-  // UPDATE FILTER BUTTONS
-  // =======================================
-
   function updateFilterButtons() {
 
     filterGroups.forEach(
@@ -138,6 +130,7 @@ if (
 
         const groupName =
           group.dataset.filterGroup;
+
 
         const buttons =
           group.querySelectorAll(
@@ -173,10 +166,6 @@ if (
   }
 
 
-  // =======================================
-  // FILTER PROJECTS
-  // =======================================
-
   function filterProjects() {
 
     let visibleProjectCount = 0;
@@ -186,12 +175,11 @@ if (
       function (project) {
 
         const projectTypes =
-          project.dataset.type
-            .split(" ");
+          project.dataset.type.split(" ");
+
 
         const projectLanguages =
-          project.dataset.languages
-            .split(" ");
+          project.dataset.languages.split(" ");
 
 
         const matchesProjectType =
@@ -218,9 +206,7 @@ if (
 
 
         if (shouldDisplayProject) {
-
           visibleProjectCount++;
-
         }
 
       }
@@ -241,21 +227,12 @@ if (
     }
 
 
-    /*
-      If filtering changes the layout,
-      recalculate iframe sizes.
-    */
-
     requestAnimationFrame(
       resizeProjectPreviews
     );
 
   }
 
-
-  // =======================================
-  // FILTER BUTTON CLICKS
-  // =======================================
 
   filterGroups.forEach(
     function (group) {
@@ -278,12 +255,9 @@ if (
           const groupName =
             group.dataset.filterGroup;
 
-          const selectedValue =
-            selectedButton.dataset.filter;
-
 
           selectedFilters[groupName] =
-            selectedValue;
+            selectedButton.dataset.filter;
 
 
           updateFilterButtons();
@@ -297,8 +271,6 @@ if (
   );
 
 
-  // Run filters when page loads
-
   updateFilterButtons();
 
   filterProjects();
@@ -307,110 +279,153 @@ if (
 
 
 // =========================================
-// LAPTOP WEBSITE PREVIEWS
+// DESKTOP / LAPTOP IFRAME PREVIEWS
 // =========================================
 
 function resizeProjectPreviews() {
 
   const previews =
-    document.querySelectorAll(
-      ".project-preview"
+    document.querySelectorAll(".project-preview");
+
+  previews.forEach(function (preview) {
+
+    const iframe =
+      preview.querySelector("iframe");
+
+    // Placeholder cards don't have iframes
+    if (!iframe) {
+      return;
+    }
+
+    /*
+      Large virtual laptop/desktop viewport.
+
+      The website thinks it has a
+      1920px-wide browser window.
+
+      We then shrink that entire browser
+      into the project card.
+    */
+
+    const desktopWidth = 1920;
+    const desktopHeight = 1200;
+
+    const previewWidth =
+      preview.clientWidth;
+
+    if (previewWidth <= 0) {
+      return;
+    }
+
+    /*
+      Example:
+
+      Card width = 340px
+
+      340 / 1920 = 0.177
+
+      So the entire website is displayed
+      at roughly 17.7% of desktop size.
+    */
+
+    const scale =
+      previewWidth / desktopWidth;
+
+    iframe.style.width =
+      `${desktopWidth}px`;
+
+    iframe.style.height =
+      `${desktopHeight}px`;
+
+    iframe.style.transformOrigin =
+      "top left";
+
+    iframe.style.transform =
+      `scale(${scale})`;
+
+  });
+
+}
+
+
+// Run after page loads
+window.addEventListener(
+  "load",
+  resizeProjectPreviews
+);
+
+
+// Run when browser changes size
+window.addEventListener(
+  "resize",
+  resizeProjectPreviews
+);
+
+
+// Run after each website iframe loads
+document
+  .querySelectorAll(".project-preview iframe")
+  .forEach(function (iframe) {
+
+    iframe.addEventListener(
+      "load",
+      resizeProjectPreviews
     );
 
-
-  previews.forEach(
-    function (preview) {
-
-      const iframe =
-        preview.querySelector("iframe");
+  });
 
 
-      /*
-        Placeholder cards don't contain
-        an iframe, so skip them.
-      */
+// Watch cards themselves for size changes
+if ("ResizeObserver" in window) {
 
-      if (!iframe) {
-        return;
-      }
+  const previewObserver =
+    new ResizeObserver(function () {
 
+      resizeProjectPreviews();
 
-      /*
-        Every embedded website renders
-        as though it is inside a
-        1200 × 675 laptop browser.
-
-        This prevents the embedded
-        website from switching to its
-        mobile layout simply because
-        the portfolio card is narrow.
-      */
-
-      const laptopWidth = 1200;
-      const laptopHeight = 675;
+    });
 
 
-      const previewWidth =
-        preview.clientWidth;
+  document
+    .querySelectorAll(".project-preview")
+    .forEach(function (preview) {
 
+      previewObserver.observe(preview);
 
-      /*
-        Avoid calculating while a
-        hidden element has zero width.
-      */
-
-      if (previewWidth <= 0) {
-        return;
-      }
-
-
-      /*
-        Calculate exactly how much the
-        laptop browser needs to shrink
-        to match the portfolio card.
-      */
-
-      const scale =
-        previewWidth / laptopWidth;
-
-
-      iframe.style.width =
-        `${laptopWidth}px`;
-
-      iframe.style.height =
-        `${laptopHeight}px`;
-
-      iframe.style.transformOrigin =
-        "top left";
-
-      iframe.style.transform =
-        `scale(${scale})`;
-
-    }
-  );
+    });
 
 }
 
 
 // =========================================
-// RUN PREVIEW RESIZING
+// INITIAL LOAD
 // =========================================
 
 window.addEventListener(
   "load",
-  function () {
-
-    resizeProjectPreviews();
-
-  }
+  resizeProjectPreviews
 );
+
+
+// =========================================
+// BROWSER RESIZE
+// =========================================
+
+let resizeTimer;
 
 
 window.addEventListener(
   "resize",
   function () {
 
-    resizeProjectPreviews();
+    clearTimeout(resizeTimer);
+
+
+    resizeTimer =
+      setTimeout(
+        resizeProjectPreviews,
+        50
+      );
 
   }
 );
@@ -420,45 +435,29 @@ window.addEventListener(
 // LAZY-LOADED IFRAMES
 // =========================================
 
-const projectIframes =
-  document.querySelectorAll(
+document
+  .querySelectorAll(
     ".project-preview iframe"
+  )
+  .forEach(
+    function (iframe) {
+
+      iframe.addEventListener(
+        "load",
+        resizeProjectPreviews
+      );
+
+    }
   );
 
 
-projectIframes.forEach(
-  function (iframe) {
-
-    iframe.addEventListener(
-      "load",
-      function () {
-
-        resizeProjectPreviews();
-
-      }
-    );
-
-  }
-);
-
-
 // =========================================
-// RESIZE OBSERVER
+// WATCH PREVIEW SIZE CHANGES
 // =========================================
-
-/*
-  This catches layout changes that don't
-  trigger a normal browser resize.
-
-  Example:
-  - filter changes
-  - grid changes
-  - responsive layout changes
-*/
 
 if ("ResizeObserver" in window) {
 
-  const previewResizeObserver =
+  const previewObserver =
     new ResizeObserver(
       function () {
 
@@ -475,7 +474,7 @@ if ("ResizeObserver" in window) {
     .forEach(
       function (preview) {
 
-        previewResizeObserver.observe(
+        previewObserver.observe(
           preview
         );
 
@@ -483,3 +482,31 @@ if ("ResizeObserver" in window) {
     );
 
 }
+
+/* =========================================
+   SCALE PROJECT IFRAMES LIKE LAPTOP PREVIEWS
+========================================= */
+
+function scaleProjectFrames() {
+  const previews = document.querySelectorAll(".project-browser");
+
+  previews.forEach((preview) => {
+    const iframe = preview.querySelector(".project-browser-frame");
+
+    if (!iframe) return;
+
+    const laptopWidth = 1440;
+
+    const availableWidth = preview.clientWidth;
+
+    const scale = availableWidth / laptopWidth;
+
+    iframe.style.transform = `scale(${scale})`;
+  });
+}
+
+window.addEventListener("DOMContentLoaded", scaleProjectFrames);
+
+window.addEventListener("load", scaleProjectFrames);
+
+window.addEventListener("resize", scaleProjectFrames);
