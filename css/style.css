@@ -7,22 +7,23 @@
   --muted: #705e67;
   --paper: #fffaf2;
   --cream: #f8efe4;
+
   --pink: #efb5c8;
   --rose: #b85679;
   --plum: #5c3850;
+
   --matcha: #cbd5ad;
   --green: #596c4e;
+
   --peach: #f3c89d;
   --lavender: #d9d0ed;
   --blue: #b9ced9;
   --yellow: #e4b868;
+
   --line: #3f3038;
 
-  --serif: "Space Grotesk", sans-serif;
-  --body: "DM Sans", sans-serif;
-
-  --shadow-pink: 6px 6px 0 var(--pink);
-  --shadow-green: 6px 6px 0 var(--matcha);
+  --heading: "Space Grotesk", Arial, sans-serif;
+  --body: "DM Sans", Arial, sans-serif;
 }
 
 
@@ -41,47 +42,39 @@ html {
 body {
   margin: 0;
 
+  overflow-x: hidden;
+
   color: var(--ink);
 
   font-family: var(--body);
-  line-height: 1.55;
-
-  overflow-x: hidden;
+  line-height: 1.5;
 
   background-color: var(--cream);
 
   background-image:
     radial-gradient(
-      rgba(63, 48, 56, 0.07) 0.8px,
+      rgba(63, 48, 56, 0.06) 0.8px,
       transparent 0.8px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.3),
-      transparent 30%,
-      rgba(239, 181, 200, 0.08)
     );
 
-  background-size:
-    8px 8px,
-    100% 100%;
+  background-size: 8px 8px;
+}
+
+img {
+  display: block;
+
+  max-width: 100%;
 }
 
 a {
   color: inherit;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
 h1,
 h2,
 h3,
 .logo {
-  font-family: var(--serif);
-  line-height: 1.05;
+  font-family: var(--heading);
 }
 
 
@@ -91,6 +84,7 @@ h3,
 
 .skip-link {
   position: absolute;
+
   left: -9999px;
 }
 
@@ -100,7 +94,7 @@ h3,
 
   z-index: 9999;
 
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
 
   background: white;
 
@@ -113,17 +107,19 @@ h3,
 ========================================= */
 
 .site-header {
-  max-width: 1250px;
+  max-width: 1200px;
 
   margin: 0 auto;
-  padding: 1rem 5%;
+
+  padding: 0.8rem 5%;
 
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   border-bottom:
-    1px solid rgba(63, 48, 56, 0.35);
+    1px solid rgba(63, 48, 56, 0.28);
 }
 
 .logo {
@@ -131,7 +127,7 @@ h3,
 
   color: var(--ink);
 
-  font-size: 1.65rem;
+  font-size: 1.35rem;
   font-weight: 700;
 
   text-decoration: none;
@@ -146,14 +142,12 @@ h3,
 
   position: absolute;
 
-  top: -0.7rem;
-  right: -1rem;
+  top: -0.5rem;
+  right: -0.85rem;
 
   color: var(--yellow);
 
-  font-size: 0.85rem;
-
-  transform: rotate(12deg);
+  font-size: 0.7rem;
 }
 
 
@@ -163,78 +157,53 @@ h3,
 
 .site-header nav {
   display: flex;
+
   align-items: center;
 
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .site-header nav a {
-  position: relative;
+  color: var(--ink);
 
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
 
   text-decoration: none;
 }
 
-.site-header nav a:not(.nav-cta)::after {
-  content: "";
-
-  position: absolute;
-
-  right: 0;
-  bottom: -5px;
-  left: 0;
-
-  height: 3px;
-
-  background: var(--pink);
-
-  transform: scaleX(0) rotate(-1deg);
-
-  transition: transform 0.2s ease;
-}
-
-.site-header nav a:hover::after,
-.site-header nav a:focus-visible::after {
-  transform: scaleX(1) rotate(-1deg);
+.site-header nav a:hover {
+  color: var(--rose);
 }
 
 .nav-cta {
-  padding: 0.5rem 0.9rem;
+  padding: 0.45rem 0.75rem;
 
-  color: white;
+  color: white !important;
 
   background: var(--plum);
 
   border: 1px solid var(--line);
 
   box-shadow: 3px 3px 0 var(--pink);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.nav-cta:hover {
-  box-shadow: 5px 5px 0 var(--pink);
-
-  transform: translate(-2px, -2px);
 }
 
 .menu-button {
   display: none;
 
-  padding: 0.5rem 0.8rem;
+  padding: 0.45rem 0.75rem;
 
   color: var(--ink);
 
   font: inherit;
-  font-weight: 600;
+  font-size: 0.8rem;
+  font-weight: 700;
 
   background: var(--paper);
 
   border: 1px solid var(--line);
+
+  border-radius: 0;
 
   box-shadow: 3px 3px 0 var(--pink);
 
@@ -253,15 +222,15 @@ h3,
 
   margin: 0 auto;
 
-  padding: 2.8rem 5% 3rem;
+  padding: 2rem 5% 2.25rem;
 
   display: grid;
 
   grid-template-columns:
-    minmax(0, 1.25fr)
-    minmax(280px, 0.75fr);
+    minmax(0, 1.3fr)
+    minmax(270px, 0.7fr);
 
-  gap: 2.5rem;
+  gap: 2rem;
 
   align-items: center;
 }
@@ -271,32 +240,14 @@ h3,
 
   position: absolute;
 
-  top: 1.2rem;
+  top: 0.7rem;
   left: 1%;
 
   color: var(--matcha);
 
-  font-size: 3rem;
+  font-size: 2.3rem;
 
   opacity: 0.65;
-
-  transform: rotate(-14deg);
-}
-
-.hero::after {
-  content: "ideas → systems → impact";
-
-  position: absolute;
-
-  right: 6%;
-  bottom: 0.5rem;
-
-  color: var(--rose);
-
-  font-family: cursive;
-  font-size: 0.85rem;
-
-  transform: rotate(-3deg);
 }
 
 .hero-copy {
@@ -311,14 +262,14 @@ h3,
 ========================================= */
 
 .eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
 
   color: var(--rose);
 
-  font-size: 0.7rem;
+  font-size: 0.64rem;
   font-weight: 700;
 
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
 
   text-transform: uppercase;
 }
@@ -329,12 +280,12 @@ h3,
 ========================================= */
 
 .hero h1 {
-  max-width: 720px;
+  max-width: 700px;
 
-  margin: 0 0 0.9rem;
+  margin: 0 0 0.7rem;
 
   font-size:
-    clamp(2.5rem, 4.4vw, 4.5rem);
+    clamp(2.4rem, 4.2vw, 4.1rem);
 
   line-height: 0.98;
 
@@ -346,8 +297,8 @@ h3,
 
   display: block;
 
-  width: 52%;
-  height: 6px;
+  width: 48%;
+  height: 5px;
 
   margin-top: 0.35rem;
 
@@ -360,14 +311,15 @@ h3,
 ========================================= */
 
 .hero-text {
-  max-width: 680px;
+  max-width: 670px;
 
   margin: 0;
 
   color: var(--muted);
 
-  font-size: 0.96rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+
+  line-height: 1.45;
 }
 
 
@@ -378,46 +330,43 @@ h3,
 .status {
   display: inline-block;
 
-  margin-top: 1rem;
+  margin-top: 0.75rem;
 
-  padding: 0.5rem 0.75rem;
+  padding: 0.4rem 0.6rem;
+
+  color: var(--ink);
+
+  font-size: 0.69rem;
 
   background: var(--paper);
 
   border: 1px dashed var(--line);
 
   box-shadow: 3px 3px 0 var(--matcha);
-
-  font-size: 0.76rem;
-
-  transform: rotate(-0.3deg);
 }
 
 .status span {
   display: inline-block;
 
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 
-  margin-right: 0.4rem;
+  margin-right: 0.35rem;
 
   background: #66875d;
 
   border-radius: 50%;
-
-  box-shadow:
-    0 0 0 3px rgba(102, 135, 93, 0.18);
 }
 
 
 /* =========================================
-   HERO SIDE CARD
+   HERO CARD
 ========================================= */
 
 .hero-card {
   position: relative;
 
-  padding: 1.7rem;
+  padding: 1.35rem;
 
   color: var(--paper);
 
@@ -425,9 +374,7 @@ h3,
 
   border: 1px solid var(--line);
 
-  box-shadow: 8px 9px 0 var(--pink);
-
-  transform: rotate(1deg);
+  box-shadow: 7px 8px 0 var(--pink);
 }
 
 .hero-card::before {
@@ -435,38 +382,23 @@ h3,
 
   position: absolute;
 
-  top: -10px;
+  top: -8px;
   left: 35%;
 
-  width: 75px;
-  height: 19px;
+  width: 65px;
+  height: 16px;
 
   background:
-    rgba(226, 190, 123, 0.72);
+    rgba(226, 190, 123, 0.75);
 
-  transform: rotate(-5deg);
-}
-
-.hero-card::after {
-  content: "✦";
-
-  position: absolute;
-
-  right: 0.8rem;
-  bottom: 0.6rem;
-
-  color: var(--yellow);
-
-  font-size: 1.5rem;
-
-  transform: rotate(10deg);
+  transform: rotate(-4deg);
 }
 
 .hero-card h2 {
-  margin: 0.3rem 0 1.2rem;
+  margin: 0.25rem 0 0.9rem;
 
   font-size:
-    clamp(1.45rem, 2.2vw, 2.1rem);
+    clamp(1.3rem, 2vw, 1.85rem);
 
   line-height: 1.1;
 }
@@ -476,7 +408,7 @@ h3,
 
   color: var(--pink);
 
-  font-size: 0.68rem;
+  font-size: 0.61rem;
   font-weight: 700;
 
   letter-spacing: 0.14em;
@@ -491,25 +423,25 @@ h3,
 
 .button-row {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .button {
   display: inline-block;
 
-  padding: 0.6rem 0.85rem;
+  padding: 0.52rem 0.72rem;
 
-  font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 700;
 
   text-decoration: none;
 
   border: 1px solid currentColor;
 
-  cursor: pointer;
+  border-radius: 0;
 
   transition:
     transform 0.2s ease,
@@ -548,53 +480,37 @@ h3,
 ========================================= */
 
 .social-strip {
-  position: relative;
-
-  width: 101%;
-
-  margin-left: -0.5%;
-
-  padding: 1.25rem 5%;
+  padding: 0.85rem 5%;
 
   text-align: center;
 
   background: var(--matcha);
 
   border-block: 1px solid var(--line);
-
-  transform: rotate(-0.2deg);
 }
 
 .social-strip h2 {
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.5rem;
 
-  font-size: 1rem;
-}
-
-.social-strip h2::before,
-.social-strip h2::after {
-  content: "✦";
-
-  margin: 0 0.6rem;
-
-  color: var(--rose);
+  font-size: 0.82rem;
 }
 
 .social-links {
   display: flex;
+
   flex-wrap: wrap;
 
   justify-content: center;
   align-items: center;
 
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 .social-links a {
   display: grid;
 
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
 
   place-items: center;
 
@@ -603,33 +519,22 @@ h3,
   border: 1px solid var(--line);
 
   box-shadow:
-    3px 3px 0 rgba(63, 48, 56, 0.3);
+    2px 2px 0 rgba(63, 48, 56, 0.3);
 
   transition:
     transform 0.2s ease,
     background 0.2s ease;
 }
 
-.social-links a:nth-child(odd) {
-  transform: rotate(-2deg);
-}
-
-.social-links a:nth-child(even) {
-  transform: rotate(2deg);
-}
-
-.social-links a:hover,
-.social-links a:focus-visible {
+.social-links a:hover {
   background: var(--pink);
 
-  transform:
-    translateY(-4px)
-    rotate(0);
+  transform: translateY(-2px);
 }
 
 .social-links img {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
 
   object-fit: contain;
 
@@ -638,7 +543,7 @@ h3,
 
 
 /* =========================================
-   MAIN SECTIONS
+   SECTIONS
 ========================================= */
 
 .section {
@@ -648,28 +553,8 @@ h3,
 
   margin: 0 auto;
 
-  padding: 3.25rem 5%;
+  padding: 2.5rem 5%;
 }
-
-.section::before {
-  content: "✦";
-
-  position: absolute;
-
-  top: 2.8rem;
-  right: 2%;
-
-  color: var(--yellow);
-
-  font-size: 1.6rem;
-
-  transform: rotate(15deg);
-}
-
-
-/* =========================================
-   SECTION HEADINGS
-========================================= */
 
 .section-heading {
   display: flex;
@@ -677,35 +562,31 @@ h3,
   justify-content: space-between;
   align-items: end;
 
-  gap: 2rem;
+  gap: 1rem;
 
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .section-heading h2 {
-  margin: 0.2rem 0 0;
+  margin: 0.1rem 0 0;
 
   font-size:
-    clamp(2.2rem, 4vw, 3.7rem);
+    clamp(2rem, 3.4vw, 3.25rem);
 
-  letter-spacing: -0.05em;
+  line-height: 1;
+
+  letter-spacing: -0.045em;
 }
 
-.text-link,
-.project-card a {
+.text-link {
   color: var(--plum);
 
+  font-size: 0.73rem;
   font-weight: 700;
 
   text-decoration-color: var(--rose);
 
-  text-decoration-thickness: 2px;
-
   text-underline-offset: 4px;
-}
-
-.text-link {
-  font-size: 0.85rem;
 }
 
 
@@ -719,37 +600,35 @@ h3,
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 
-  gap: 18px;
+  gap: 16px;
 
   align-items: stretch;
 }
 
 
 /* =========================================
-   PROJECT CARDS
+   PROJECT CARD
 ========================================= */
 
-.project-card,
-.project-card:nth-child(1),
-.project-card:nth-child(2),
-.project-card:nth-child(3) {
-  position: relative;
-
+.project-card {
   min-width: 0;
 
-  margin-top: 0;
+  margin: 0;
 
   overflow: hidden;
 
   display: flex;
+
   flex-direction: column;
 
   background: var(--paper);
 
   border: 1px solid var(--line);
 
+  border-radius: 0;
+
   box-shadow:
-    5px 5px 0 rgba(92, 56, 80, 0.16);
+    4px 4px 0 rgba(92, 56, 80, 0.15);
 
   transform: none;
 
@@ -758,37 +637,24 @@ h3,
     box-shadow 0.2s ease;
 }
 
-.project-card::before {
-  content: "";
-
-  position: absolute;
-
-  top: -8px;
-  left: 40%;
-
-  z-index: 5;
-
-  width: 65px;
-  height: 18px;
-
-  background:
-    rgba(222, 184, 115, 0.68);
-
-  transform: rotate(-3deg);
-}
-
 .project-card:hover {
-  z-index: 3;
-
   box-shadow:
-    7px 7px 0 var(--pink);
+    6px 6px 0 var(--pink);
 
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 
 /* =========================================
    LIVE WEBSITE PREVIEW
+
+   IMPORTANT:
+   Container = 16:9
+   Virtual laptop = 1200 × 675
+   1200 / 675 = 16:9
+
+   Therefore the scaled iframe fills
+   the container exactly.
 ========================================= */
 
 .project-preview {
@@ -796,17 +662,13 @@ h3,
 
   width: 100%;
 
-  /*
-    Same ratio as the virtual
-    desktop iframe below.
-  */
   aspect-ratio: 16 / 9;
 
   overflow: hidden;
 
-  flex-shrink: 0;
+  flex: 0 0 auto;
 
-  background: var(--paper);
+  background: white;
 
   border-bottom: 1px solid var(--line);
 }
@@ -817,12 +679,10 @@ h3,
   top: 0;
   left: 0;
 
-  /*
-    Each website renders as though
-    it is on a 1440 × 810 laptop.
-  */
-  width: 1440px;
-  height: 810px;
+  width: 1200px;
+  height: 675px;
+
+  display: block;
 
   margin: 0;
   padding: 0;
@@ -832,28 +692,23 @@ h3,
   background: white;
 
   transform-origin: top left;
+
+  /*
+    JS supplies the actual scale.
+  */
+  transform: scale(1);
 }
 
 
 /* =========================================
-   PLACEHOLDER PROJECT PREVIEWS
+   PLACEHOLDER PREVIEWS
 ========================================= */
 
-.empty-project-preview,
-.preview-placeholder {
-  position: absolute;
-
-  inset: 0;
-
+.placeholder-preview {
   display: flex;
-  flex-direction: column;
 
   align-items: center;
   justify-content: center;
-
-  padding: 1.5rem;
-
-  text-align: center;
 
   background-color: #f5dfe7;
 
@@ -866,54 +721,32 @@ h3,
   background-size: 10px 10px;
 }
 
-.coming-soon-content {
+.placeholder-content {
+  padding: 1rem;
+
   text-align: center;
 }
 
-.coming-soon-number {
+.placeholder-content span {
   display: block;
 
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 
   color: var(--rose);
 
-  font-family: var(--serif);
+  font-family: var(--heading);
 
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
-.coming-soon-content p {
+.placeholder-content p {
   margin: 0;
 
   color: var(--plum);
 
-  font-family: var(--serif);
-
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.preview-placeholder span {
-  color: var(--rose);
-
-  font-size: 0.68rem;
+  font-size: 0.76rem;
   font-weight: 700;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-}
-
-.preview-placeholder p {
-  margin: 0.4rem 0 0;
-
-  color: var(--ink);
-
-  font-family: var(--serif);
-
-  font-size: 0.85rem;
-  font-weight: 600;
 }
 
 
@@ -922,19 +755,21 @@ h3,
 ========================================= */
 
 .project-body {
-  padding: 1.2rem;
+  padding: 0.9rem;
 
   display: flex;
+
   flex: 1;
+
   flex-direction: column;
 }
 
 .project-type {
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.22rem;
 
   color: var(--rose);
 
-  font-size: 0.66rem;
+  font-size: 0.59rem;
   font-weight: 700;
 
   letter-spacing: 0.11em;
@@ -942,44 +777,42 @@ h3,
   text-transform: uppercase;
 }
 
-.project-body h3,
-.project-body h2 {
-  margin: 0 0 0.55rem;
+.project-body h3 {
+  margin: 0 0 0.35rem;
 
-  font-family: var(--serif);
+  color: var(--ink);
 
-  font-size: 1.3rem;
+  font-size: 1.1rem;
 
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
 .project-body > p:not(.project-type):not(.tags) {
-  margin: 0 0 0.8rem;
+  margin: 0 0 0.6rem;
 
   color: var(--muted);
 
-  font-size: 0.84rem;
+  font-size: 0.75rem;
 
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 .tags {
   margin-top: auto;
-  margin-bottom: 0.7rem;
 
-  padding-top: 0.6rem;
+  margin-bottom: 0.5rem;
+
+  padding-top: 0.45rem;
 
   color: var(--muted);
 
-  font-size: 0.68rem;
+  font-size: 0.59rem;
   font-weight: 700;
 
-  line-height: 1.4;
-
-  letter-spacing: 0.04em;
+  line-height: 1.35;
 
   border-top:
-    1px dashed rgba(63, 48, 56, 0.3);
+    1px dashed rgba(63, 48, 56, 0.25);
 }
 
 
@@ -989,22 +822,23 @@ h3,
 
 .project-links {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 0.8rem;
+  gap: 0.65rem;
 }
 
 .project-links a {
   color: var(--plum);
 
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 700;
 
   text-decoration: underline;
 
   text-decoration-color: var(--rose);
 
-  text-underline-offset: 4px;
+  text-underline-offset: 3px;
 }
 
 .project-links a:hover {
@@ -1013,7 +847,7 @@ h3,
 
 
 /* =========================================
-   PASSION PROJECTS
+   PASSION PROJECT SECTION
 ========================================= */
 
 .tinted {
@@ -1029,30 +863,14 @@ h3,
 
   background-image:
     radial-gradient(
-      rgba(92, 56, 80, 0.08) 0.7px,
+      rgba(92, 56, 80, 0.07) 0.7px,
       transparent 0.7px
     );
 
   background-size: 9px 9px;
 
   border-block:
-    1px solid rgba(63, 48, 56, 0.25);
-}
-
-.tinted::after {
-  content: "learning by making";
-
-  position: absolute;
-
-  right: 6%;
-  bottom: 0.7rem;
-
-  color: var(--rose);
-
-  font-family: cursive;
-  font-size: 0.85rem;
-
-  transform: rotate(-3deg);
+    1px solid rgba(63, 48, 56, 0.22);
 }
 
 
@@ -1061,22 +879,18 @@ h3,
 ========================================= */
 
 .contact-banner {
-  position: relative;
-
   max-width: 1080px;
 
-  margin: 3rem auto;
+  margin: 2.3rem auto;
 
-  padding: 2.2rem 2.5rem;
+  padding: 1.6rem 1.8rem;
 
   display: flex;
 
   justify-content: space-between;
   align-items: center;
 
-  gap: 2rem;
-
-  overflow: hidden;
+  gap: 1.5rem;
 
   color: white;
 
@@ -1084,36 +898,14 @@ h3,
 
   border: 1px solid var(--line);
 
-  box-shadow: 8px 8px 0 var(--yellow);
-
-  transform: rotate(-0.3deg);
-}
-
-.contact-banner::before {
-  content: "✿";
-
-  position: absolute;
-
-  right: 20%;
-  bottom: -4rem;
-
-  color:
-    rgba(255, 255, 255, 0.1);
-
-  font-size: 10rem;
+  box-shadow: 7px 7px 0 var(--yellow);
 }
 
 .contact-banner h2 {
-  position: relative;
-
-  z-index: 2;
-
-  max-width: 720px;
-
-  margin: 0.2rem 0;
+  margin: 0.15rem 0;
 
   font-size:
-    clamp(2rem, 3.5vw, 3.2rem);
+    clamp(1.8rem, 3vw, 2.8rem);
 }
 
 .contact-banner .eyebrow {
@@ -1130,7 +922,7 @@ footer {
 
   margin: 0 auto;
 
-  padding: 1.6rem 5%;
+  padding: 1.2rem 5%;
 
   display: flex;
 
@@ -1141,9 +933,9 @@ footer {
   color: var(--muted);
 
   border-top:
-    1px solid rgba(63, 48, 56, 0.3);
+    1px solid rgba(63, 48, 56, 0.25);
 
-  font-size: 0.78rem;
+  font-size: 0.7rem;
 }
 
 footer p {
@@ -1152,7 +944,7 @@ footer p {
 
 
 /* =========================================
-   CONTACT / GENERAL PAGE
+   GENERAL PAGE
 ========================================= */
 
 .page {
@@ -1160,14 +952,14 @@ footer p {
 
   margin: 0 auto;
 
-  padding: 3.5rem 5%;
+  padding: 2.8rem 5%;
 }
 
 .page h1 {
-  margin: 0.3rem 0;
+  margin: 0.25rem 0;
 
   font-size:
-    clamp(2.8rem, 5vw, 5rem);
+    clamp(2.6rem, 5vw, 4.8rem);
 
   letter-spacing: -0.05em;
 }
@@ -1177,12 +969,12 @@ footer p {
 
   color: var(--muted);
 
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 
 /* =========================================
-   CONTACT LAYOUT
+   CONTACT PAGE
 ========================================= */
 
 .contact-layout {
@@ -1191,7 +983,7 @@ footer p {
   grid-template-columns:
     0.85fr 1.15fr;
 
-  gap: 3rem;
+  gap: 2.5rem;
 
   align-items: start;
 }
@@ -1199,17 +991,15 @@ footer p {
 .contact-form {
   display: grid;
 
-  gap: 0.5rem;
+  gap: 0.45rem;
 
-  padding: 1.7rem;
+  padding: 1.5rem;
 
   background: var(--paper);
 
   border: 1px solid var(--line);
 
-  box-shadow: var(--shadow-pink);
-
-  transform: rotate(0.3deg);
+  box-shadow: 5px 5px 0 var(--pink);
 }
 
 .contact-form input,
@@ -1217,9 +1007,9 @@ footer p {
 .contact-form textarea {
   width: 100%;
 
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 
-  padding: 0.75rem;
+  padding: 0.7rem;
 
   color: var(--ink);
 
@@ -1243,7 +1033,7 @@ footer p {
 .form-note {
   color: var(--muted);
 
-  font-size: 0.78rem;
+  font-size: 0.75rem;
 }
 
 
@@ -1262,7 +1052,7 @@ footer p {
 
 
 /* =========================================
-   MOBILE NAV + HERO
+   MOBILE NAVIGATION / HERO
 ========================================= */
 
 @media (max-width: 850px) {
@@ -1278,7 +1068,7 @@ footer p {
   .site-header nav {
     position: absolute;
 
-    top: 4.2rem;
+    top: 3.8rem;
     right: 5%;
     left: 5%;
 
@@ -1286,8 +1076,9 @@ footer p {
 
     display: none;
 
-    padding: 1rem;
+    padding: 0.9rem;
 
+    flex-direction: column;
     align-items: stretch;
 
     background: var(--paper);
@@ -1295,53 +1086,32 @@ footer p {
     border: 1px solid var(--line);
 
     box-shadow:
-      6px 6px 0 var(--pink);
-
-    flex-direction: column;
+      5px 5px 0 var(--pink);
   }
 
   .site-header nav.open {
     display: flex;
   }
 
-
-  /* HERO */
-
   .hero {
-    padding: 2.5rem 5% 3rem;
+    padding: 1.8rem 5% 2rem;
 
     grid-template-columns: 1fr;
 
-    gap: 1.8rem;
-  }
-
-  .hero h1 {
-    max-width: 680px;
+    gap: 1.25rem;
   }
 
   .hero-card {
     max-width: 570px;
-
-    padding: 1.5rem;
   }
-
-  .hero::after {
-    display: none;
-  }
-
-
-  /* SECTION HEADINGS */
 
   .section-heading {
     align-items: flex-start;
 
     flex-direction: column;
 
-    gap: 0.6rem;
+    gap: 0.4rem;
   }
-
-
-  /* CONTACT */
 
   .contact-layout {
     grid-template-columns: 1fr;
@@ -1370,9 +1140,11 @@ footer p {
   }
 
   .project-card {
+    width: 100%;
+
     max-width: 520px;
 
-    margin-inline: auto;
+    margin: 0 auto;
   }
 
 }
@@ -1386,12 +1158,12 @@ footer p {
 
   .site-header {
     padding:
-      0.9rem 6%;
+      0.75rem 6%;
   }
 
   .hero {
     padding:
-      2.2rem 6% 2.6rem;
+      1.6rem 6% 1.8rem;
   }
 
   .hero::before {
@@ -1400,99 +1172,77 @@ footer p {
 
   .hero h1 {
     font-size:
-      clamp(2.4rem, 12vw, 3.1rem);
+      clamp(2.15rem, 11vw, 3rem);
   }
 
   .hero-text {
-    font-size: 0.9rem;
-  }
-
-  .hero-card {
-    padding: 1.4rem;
-
-    box-shadow:
-      6px 7px 0 var(--pink);
+    font-size: 0.84rem;
   }
 
   .status {
-    font-size: 0.7rem;
+    font-size: 0.64rem;
   }
 
-
-  /* SOCIAL */
+  .hero-card {
+    padding: 1.15rem;
+  }
 
   .social-strip {
     padding:
-      1.1rem 6%;
+      0.75rem 6%;
   }
 
   .social-links {
-    gap: 0.6rem;
+    gap: 0.45rem;
   }
 
   .social-links a {
-    width: 43px;
-    height: 43px;
+    width: 38px;
+    height: 38px;
   }
 
   .social-links img {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
-
-
-  /* SECTIONS */
 
   .section {
     padding:
-      2.8rem 6%;
+      2.1rem 6%;
   }
 
   .section-heading {
-    margin-bottom: 1.1rem;
+    margin-bottom: 0.8rem;
   }
 
   .section-heading h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
-
-  /* PROJECTS */
-
   .project-grid {
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .project-body {
-    padding: 1.1rem;
+    padding: 0.85rem;
   }
-
-
-  /* CONTACT */
 
   .contact-banner {
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
 
-    padding: 1.8rem;
+    padding: 1.4rem;
   }
-
-  .contact-banner h2 {
-    font-size: 2rem;
-  }
-
-
-  /* FOOTER */
 
   footer {
     padding:
-      1.4rem 6%;
+      1.1rem 6%;
 
     align-items: flex-start;
 
     flex-direction: column;
 
-    gap: 0.25rem;
+    gap: 0.2rem;
   }
 
 }
