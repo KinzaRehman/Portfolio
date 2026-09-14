@@ -22,7 +22,23 @@ body {
 
 /* Top navigation */
 /* Professional links beside name */
+.hero-title {
+  margin: 0 0 1rem;
+  line-height: 1.05;
+}
 
+.hero-name {
+  display: block;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+}
+
+.hero-role {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--deep);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+}
 .resume-links {
   display: flex;
   flex-direction: column;
