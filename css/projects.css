@@ -898,3 +898,96 @@ footer {
     height: 260px;
   }
 }
+.projects-page {
+  width: min(1160px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0 2.5rem;
+}
+
+.projects-intro {
+  position: relative;
+  max-width: 850px;
+  margin: 0 0 1.5rem;
+  padding: 1rem 0 1.25rem;
+  border-bottom: 1px solid rgba(63, 48, 56, 0.35);
+}
+
+.projects-intro h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.hero-name {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+}
+
+.hero-role {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--plum);
+  font-size: clamp(1.3rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.page-intro {
+  max-width: 650px;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--rose);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.projects-intro::before {
+  content: "✿";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--matcha);
+  font-size: 4rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.projects-intro::after {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .projects-page {
+    width: calc(100% - 1.5rem);
+    padding-top: 1rem;
+  }
+
+  .projects-intro {
+    margin-bottom: 1.25rem;
+    padding-top: 0.75rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.2rem, 12vw, 3.25rem);
+  }
+
+  .hero-role {
+    max-width: 90%;
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .projects-intro::before {
+    display: none;
+  }
+}
