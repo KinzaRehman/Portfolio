@@ -1,9 +1,8 @@
 # Portfolio
 
 Personal portfolio highlighting my software engineering journey, data analytics experience, applied AI work, client websites, and passion projects.
-
+![Kinza Rehman Portfolio Preview](images/portfolio-main.png)
 Pages
-
 index.html — portfolio homepage
 
 resume.html — web résumé
