@@ -1,20 +1,28 @@
 # Portfolio
 
 Personal portfolio highlighting my software engineering journey, data analytics experience, applied AI work, client websites, and passion projects.
-![Kinza Rehman Portfolio Preview](images\Portfolio_main.png)
-Pages
-index.html — portfolio homepage
 
-resume.html — web résumé
+![Kinza Rehman Portfolio Preview](images/Portfolio_main.png)
 
-Built with
+## Pages
 
-HTML5, CSS3, and vanilla JavaScript. The site is responsive, keyboard-friendly, and includes reduced-motion support.
+- [Home](index.html) — portfolio homepage
+- [Projects](projects.html) — complete project collection
+- [Résumé](resume.html) — web résumé
+- [Contact](contact.html) — contact and website inquiry form
 
-Local preview
+## Built With
 
-Open index.html with VS Code Live Server or open the file directly in a browser.
+- HTML5
+- CSS3
+- Vanilla JavaScript
 
-Before publishing
+The site is responsive, keyboard-friendly, and includes reduced-motion support.
 
-Replace the placeholder LinkedIn URL in index.html and any placeholder links in resume.html with the final profile and project URLs.
+## Local Preview
+
+Open `index.html` using the VS Code Live Server extension or open the file directly in your browser.
+
+## Before Publishing
+
+Replace any placeholder profile and project URLs with the final links.
