@@ -1,52 +1,28 @@
+
+
 // =========================================
 // MOBILE NAVIGATION
 // =========================================
 
-const menuButton =
-  document.querySelector(".menu-button");
-
-const navigation =
-  document.querySelector("#site-nav");
-
+const menuButton = document.querySelector(".menu-button");
+const navigation = document.querySelector("#site-nav");
 
 if (menuButton && navigation) {
+  menuButton.addEventListener("click", function () {
+    const isOpen = navigation.classList.toggle("open");
 
-  menuButton.addEventListener(
-    "click",
-    function () {
+    menuButton.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+  });
 
-      const isOpen =
-        navigation.classList.toggle("open");
-
-      menuButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-    }
-  );
-
-
-  navigation
-    .querySelectorAll("a")
-    .forEach(function (link) {
-
-      link.addEventListener(
-        "click",
-        function () {
-
-          navigation.classList.remove("open");
-
-          menuButton.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-
-        }
-      );
-
+  navigation.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      navigation.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
     });
-
+  });
 }
 
 
@@ -54,55 +30,27 @@ if (menuButton && navigation) {
 // CURRENT YEAR
 // =========================================
 
-const yearElements =
-  document.querySelectorAll("#year");
-
-
-yearElements.forEach(
-  function (yearElement) {
-
-    yearElement.textContent =
-      new Date().getFullYear();
-
-  }
-);
+document.querySelectorAll("#year").forEach(function (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+});
 
 
 // =========================================
 // PROJECT FILTERING
-// Used on projects.html
 // =========================================
 
-const projects =
-  document.querySelectorAll(".filterable-project");
+const projects = document.querySelectorAll(".filterable-project");
+const filterGroups = document.querySelectorAll("[data-filter-group]");
+const resultsMessage = document.querySelector("#results-message");
 
-const filterGroups =
-  document.querySelectorAll("[data-filter-group]");
-
-const resultsMessage =
-  document.querySelector("#results-message");
-
-
-if (
-  projects.length > 0 &&
-  filterGroups.length > 0
-) {
-
+if (projects.length > 0 && filterGroups.length > 0) {
   const selectedFilters = {
     type: "all",
     language: "all"
   };
 
-
-  const urlParameters =
-    new URLSearchParams(
-      window.location.search
-    );
-
-
-  const requestedType =
-    urlParameters.get("type");
-
+  const urlParameters = new URLSearchParams(window.location.search);
+  const requestedType = urlParameters.get("type");
 
   const validProjectTypes = [
     "client",
@@ -110,403 +58,196 @@ if (
     "portfolio"
   ];
 
-
-  if (
-    validProjectTypes.includes(
-      requestedType
-    )
-  ) {
-
-    selectedFilters.type =
-      requestedType;
-
+  if (validProjectTypes.includes(requestedType)) {
+    selectedFilters.type = requestedType;
   }
-
 
   function updateFilterButtons() {
+    filterGroups.forEach(function (group) {
+      const groupName = group.dataset.filterGroup;
 
-    filterGroups.forEach(
-      function (group) {
+      group.querySelectorAll(".filter-button").forEach(function (button) {
+        const isSelected =
+          button.dataset.filter === selectedFilters[groupName];
 
-        const groupName =
-          group.dataset.filterGroup;
-
-
-        const buttons =
-          group.querySelectorAll(
-            ".filter-button"
-          );
-
-
-        buttons.forEach(
-          function (button) {
-
-            const isSelected =
-              button.dataset.filter ===
-              selectedFilters[groupName];
-
-
-            button.classList.toggle(
-              "active",
-              isSelected
-            );
-
-
-            button.setAttribute(
-              "aria-pressed",
-              String(isSelected)
-            );
-
-          }
-        );
-
-      }
-    );
-
+        button.classList.toggle("active", isSelected);
+        button.setAttribute("aria-pressed", String(isSelected));
+      });
+    });
   }
-
 
   function filterProjects() {
-
     let visibleProjectCount = 0;
 
+    projects.forEach(function (project) {
+      const projectTypes = (project.dataset.type || "").split(" ");
+      const projectLanguages =
+        (project.dataset.languages || "").split(" ");
 
-    projects.forEach(
-      function (project) {
+      const matchesProjectType =
+        selectedFilters.type === "all" ||
+        projectTypes.includes(selectedFilters.type);
 
-        const projectTypes =
-          project.dataset.type.split(" ");
+      const matchesLanguage =
+        selectedFilters.language === "all" ||
+        projectLanguages.includes(selectedFilters.language);
 
+      const shouldDisplayProject =
+        matchesProjectType && matchesLanguage;
 
-        const projectLanguages =
-          project.dataset.languages.split(" ");
+      project.hidden = !shouldDisplayProject;
 
-
-        const matchesProjectType =
-          selectedFilters.type === "all" ||
-          projectTypes.includes(
-            selectedFilters.type
-          );
-
-
-        const matchesLanguage =
-          selectedFilters.language === "all" ||
-          projectLanguages.includes(
-            selectedFilters.language
-          );
-
-
-        const shouldDisplayProject =
-          matchesProjectType &&
-          matchesLanguage;
-
-
-        project.hidden =
-          !shouldDisplayProject;
-
-
-        if (shouldDisplayProject) {
-          visibleProjectCount++;
-        }
-
+      if (shouldDisplayProject) {
+        visibleProjectCount++;
       }
-    );
-
+    });
 
     if (resultsMessage) {
-
-      const projectWord =
-        visibleProjectCount === 1
-          ? "project"
-          : "projects";
-
-
       resultsMessage.textContent =
-        `${visibleProjectCount} ${projectWord} shown`;
-
+        `${visibleProjectCount} ${
+          visibleProjectCount === 1 ? "project" : "projects"
+        } shown`;
     }
 
-
-    requestAnimationFrame(
-      resizeProjectPreviews
-    );
-
+    requestAnimationFrame(resizeAllProjectPreviews);
   }
 
+  filterGroups.forEach(function (group) {
+    group.addEventListener("click", function (event) {
+      const selectedButton = event.target.closest(".filter-button");
 
-  filterGroups.forEach(
-    function (group) {
+      if (!selectedButton) {
+        return;
+      }
 
-      group.addEventListener(
-        "click",
-        function (event) {
+      const groupName = group.dataset.filterGroup;
+      selectedFilters[groupName] = selectedButton.dataset.filter;
 
-          const selectedButton =
-            event.target.closest(
-              ".filter-button"
-            );
+      updateFilterButtons();
+      filterProjects();
+    });
+  });
 
-
-          if (!selectedButton) {
-            return;
-          }
-
-
-          const groupName =
-            group.dataset.filterGroup;
+  updateFilterButtons();
+  filterProjects();
+}
 
 
-          selectedFilters[groupName] =
-            selectedButton.dataset.filter;
+// =========================================
+// PROJECT IFRAME SCALING
+// =========================================
+
+const desktopWidth = 1440;
+const desktopHeight = 900;
+
+function resizeProjectPreview(preview) {
+  const iframe = preview.querySelector("iframe");
+
+  if (!iframe || preview.clientWidth <= 0) {
+    return;
+  }
+
+  const scale = preview.clientWidth / desktopWidth;
+
+  iframe.style.width = `${desktopWidth}px`;
+  iframe.style.height = `${desktopHeight}px`;
+  iframe.style.transformOrigin = "top left";
+  iframe.style.transform = `scale(${scale})`;
+}
+
+function resizeAllProjectPreviews() {
+  document
+    .querySelectorAll(".project-preview")
+    .forEach(resizeProjectPreview);
+}
 
 
-          updateFilterButtons();
+// =========================================
+// LAZY-LOAD IFRAMES
+// =========================================
 
-          filterProjects();
+const lazyIframes = document.querySelectorAll(
+  ".project-preview iframe[data-src]"
+);
 
+function loadIframe(iframe) {
+  if (!iframe.dataset.src || iframe.src) {
+    return;
+  }
+
+  iframe.src = iframe.dataset.src;
+  iframe.removeAttribute("data-src");
+
+  iframe.addEventListener(
+    "load",
+    function () {
+      const preview = iframe.closest(".project-preview");
+
+      if (preview) {
+        resizeProjectPreview(preview);
+      }
+    },
+    { once: true }
+  );
+}
+
+if ("IntersectionObserver" in window) {
+  const iframeObserver = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) {
+          return;
         }
-      );
 
+        loadIframe(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      // Begin loading shortly before the card appears
+      rootMargin: "300px 0px"
     }
   );
 
-
-  updateFilterButtons();
-
-  filterProjects();
-
+  lazyIframes.forEach(function (iframe) {
+    iframeObserver.observe(iframe);
+  });
+} else {
+  lazyIframes.forEach(loadIframe);
 }
 
 
 // =========================================
-// DESKTOP / LAPTOP IFRAME PREVIEWS
+// WATCH PROJECT CARD SIZE CHANGES
 // =========================================
 
-function resizeProjectPreviews() {
-
-  const previews =
-    document.querySelectorAll(".project-preview");
-
-  previews.forEach(function (preview) {
-
-    const iframe =
-      preview.querySelector("iframe");
-
-    // Placeholder cards don't have iframes
-    if (!iframe) {
-      return;
-    }
-
-    /*
-      Large virtual laptop/desktop viewport.
-
-      The website thinks it has a
-      1920px-wide browser window.
-
-      We then shrink that entire browser
-      into the project card.
-    */
-
-    const desktopWidth = 1920;
-    const desktopHeight = 1200;
-
-    const previewWidth =
-      preview.clientWidth;
-
-    if (previewWidth <= 0) {
-      return;
-    }
-
-    /*
-      Example:
-
-      Card width = 340px
-
-      340 / 1920 = 0.177
-
-      So the entire website is displayed
-      at roughly 17.7% of desktop size.
-    */
-
-    const scale =
-      previewWidth / desktopWidth;
-
-    iframe.style.width =
-      `${desktopWidth}px`;
-
-    iframe.style.height =
-      `${desktopHeight}px`;
-
-    iframe.style.transformOrigin =
-      "top left";
-
-    iframe.style.transform =
-      `scale(${scale})`;
-
-  });
-
-}
-
-
-// Run after page loads
-window.addEventListener(
-  "load",
-  resizeProjectPreviews
-);
-
-
-// Run when browser changes size
-window.addEventListener(
-  "resize",
-  resizeProjectPreviews
-);
-
-
-// Run after each website iframe loads
-document
-  .querySelectorAll(".project-preview iframe")
-  .forEach(function (iframe) {
-
-    iframe.addEventListener(
-      "load",
-      resizeProjectPreviews
-    );
-
-  });
-
-
-// Watch cards themselves for size changes
 if ("ResizeObserver" in window) {
-
-  const previewObserver =
-    new ResizeObserver(function () {
-
-      resizeProjectPreviews();
-
+  const previewObserver = new ResizeObserver(function (entries) {
+    entries.forEach(function (entry) {
+      resizeProjectPreview(entry.target);
     });
+  });
 
-
-  document
-    .querySelectorAll(".project-preview")
-    .forEach(function (preview) {
-
-      previewObserver.observe(preview);
-
-    });
-
+  document.querySelectorAll(".project-preview").forEach(function (preview) {
+    previewObserver.observe(preview);
+  });
 }
 
 
 // =========================================
-// INITIAL LOAD
+// INITIAL LOAD AND BROWSER RESIZE
 // =========================================
 
-window.addEventListener(
-  "load",
-  resizeProjectPreviews
-);
-
-
-// =========================================
-// BROWSER RESIZE
-// =========================================
+window.addEventListener("DOMContentLoaded", resizeAllProjectPreviews);
+window.addEventListener("load", resizeAllProjectPreviews);
 
 let resizeTimer;
 
+window.addEventListener("resize", function () {
+  clearTimeout(resizeTimer);
 
-window.addEventListener(
-  "resize",
-  function () {
-
-    clearTimeout(resizeTimer);
-
-
-    resizeTimer =
-      setTimeout(
-        resizeProjectPreviews,
-        50
-      );
-
-  }
-);
-
-
-// =========================================
-// LAZY-LOADED IFRAMES
-// =========================================
-
-document
-  .querySelectorAll(
-    ".project-preview iframe"
-  )
-  .forEach(
-    function (iframe) {
-
-      iframe.addEventListener(
-        "load",
-        resizeProjectPreviews
-      );
-
-    }
+  resizeTimer = setTimeout(
+    resizeAllProjectPreviews,
+    100
   );
-
-
-// =========================================
-// WATCH PREVIEW SIZE CHANGES
-// =========================================
-
-if ("ResizeObserver" in window) {
-
-  const previewObserver =
-    new ResizeObserver(
-      function () {
-
-        resizeProjectPreviews();
-
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      ".project-preview"
-    )
-    .forEach(
-      function (preview) {
-
-        previewObserver.observe(
-          preview
-        );
-
-      }
-    );
-
-}
-
-/* =========================================
-   SCALE PROJECT IFRAMES LIKE LAPTOP PREVIEWS
-========================================= */
-
-function scaleProjectFrames() {
-  const previews = document.querySelectorAll(".project-browser");
-
-  previews.forEach((preview) => {
-    const iframe = preview.querySelector(".project-browser-frame");
-
-    if (!iframe) return;
-
-    const laptopWidth = 1440;
-
-    const availableWidth = preview.clientWidth;
-
-    const scale = availableWidth / laptopWidth;
-
-    iframe.style.transform = `scale(${scale})`;
-  });
-}
-
-window.addEventListener("DOMContentLoaded", scaleProjectFrames);
-
-window.addEventListener("load", scaleProjectFrames);
-
-window.addEventListener("resize", scaleProjectFrames);
+});
