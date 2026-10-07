@@ -185,6 +185,7 @@ h3,
   font-weight: 600;
   text-decoration: none;
 }
+/*adding */ 
 
 .site-header nav a:hover {
   color: var(--rose);
