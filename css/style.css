@@ -122,19 +122,22 @@ h3,
 ========================================= */
 
 .site-header {
-  max-width: 1200px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
 
   padding: 0.8rem 5%;
 
   display: flex;
-
   align-items: center;
   justify-content: space-between;
 
-  border-bottom:
-    1px solid rgba(63, 48, 56, 0.28);
+  background: var(--cream);
+
+  border-bottom: 1px solid rgba(63, 48, 56, 0.28);
 }
 
 .logo {
@@ -170,16 +173,16 @@ h3,
 
 .site-header nav {
   display: flex;
-
   align-items: center;
-
-  gap: 1.2rem;
+  gap: 1.5rem;
+  background: rgba(248, 239, 228, 0.95);
+  backdrop-filter: blur(8px); 
 }
 
 .site-header nav a {
+  color: var(--ink);
   font-size: 0.82rem;
   font-weight: 600;
-
   text-decoration: none;
 }
 
@@ -187,17 +190,6 @@ h3,
   color: var(--rose);
 }
 
-.nav-cta {
-  padding: 0.45rem 0.75rem;
-
-  color: white !important;
-
-  background: var(--plum);
-
-  border: 1px solid var(--line);
-
-  box-shadow: 3px 3px 0 var(--pink);
-}
 
 .menu-button {
   display: none;
