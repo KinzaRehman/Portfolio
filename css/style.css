@@ -466,65 +466,81 @@ h3,
 ========================================= */
 
 .social-strip {
-  padding: 0.85rem 5%;
-
+  background: #e6ead7;
+  padding: 15px 20px;
   text-align: center;
-
-  background: var(--matcha);
-
-  border-block: 1px solid var(--line);
 }
 
 .social-strip h2 {
-  margin: 0 0 0.5rem;
-
-  font-size: 0.82rem;
+  font-size: 18px;
+  color: #57364d;
+  margin: 0 0 12px;
 }
+
+.social-marquee {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.social-track {
+  display: flex;
+  width: max-content;
+  animation: social-scroll 18s linear infinite;
+}
+
 
 .social-links {
   display: flex;
-  flex-wrap: wrap;
-
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-
-  gap: 0.5rem;
+  flex-shrink: 0;
+  gap: 80px;
+  padding-right: 80px;
 }
+
 
 .social-links a {
-  display: grid;
-
-  width: 40px;
-  height: 40px;
-
-  place-items: center;
-
-  background: var(--paper);
-
-  border: 1px solid var(--line);
-
-  box-shadow:
-    2px 2px 0 rgba(63, 48, 56, 0.3);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease;
-}
-
-.social-links a:hover {
-  background: var(--pink);
-
-  transform: translateY(-2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .social-links img {
-  width: 22px;
-  height: 22px;
-
+  width: 30px;
+  height: 30px;
+  display: block;
   object-fit: contain;
-
-  mix-blend-mode: multiply;
 }
+
+.social-links a:hover img {
+  transform: scale(1.15);
+}
+
+.social-marquee {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+.social-marquee:hover .social-track,
+.social-marquee:focus-within .social-track {
+  animation-play-state: paused;
+}
+
+@keyframes social-scroll {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-track { animation: none; }
+  .social-marquee { overflow-x: auto; }
+}
+
 
 
 /* =========================================
@@ -573,7 +589,131 @@ h3,
 
   text-underline-offset: 4px;
 }
+/* =========================================
+  SECTION TECH STACK
+========================================= */
 
+/* TECH STACK */
+
+.tech-stack {
+  padding: 10px 20px 20px;
+  background: #fffaf3;
+  color: #30242e;
+}
+
+.tech-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.tech-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 12px;
+}
+
+.tech-label {
+  color: #b7557b;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.tech-heading h2 {
+  font-size: 28px;
+  margin: 0;
+  border-bottom: 3px solid #f2c2d0;
+  padding-bottom: 4px;
+}
+
+.tech-note {
+  font-family: cursive;
+  font-size: 16px;
+  color: #995a76;
+}
+
+/* CARDS */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tech-card {
+  padding: 15px;
+  border-radius: 12px;
+  min-width: 0;
+}
+
+.tech-pink { background: #f7e3e6; }
+.tech-green { background: #e6ead7; }
+
+.tech-card h3 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+  color: #57364d;
+}
+
+/* ICONS */
+
+.tech-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px 8px;
+}
+
+.tech-icons > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.tech-icons img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.tech-icons span {
+  font-size: 11px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1050px) {
+  .tech-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-heading {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tech-heading h2 {
+    font-size: 24px;
+  }
+
+  .tech-note {
+    font-size: 14px;
+  }
+}
 
 /* =========================================
    PROJECT GRID
