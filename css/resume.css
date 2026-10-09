@@ -468,3 +468,40 @@ li::marker{
     print-color-adjust: exact;
   }
 }
+
+
+@page {
+  size: letter portrait;
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: 8.5in !important;
+    min-height: 11in !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .resume-page {
+    width: 8.5in !important;
+    min-height: 11in !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0.5in !important;
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+    border: none !important;
+    transform: none !important;
+    zoom: 1 !important;
+  }
+
+  .resume-page * {
+    break-inside: avoid;
+  }
+
+  .print-button, .no-print {
+    display: none !important;
+  }
+}
