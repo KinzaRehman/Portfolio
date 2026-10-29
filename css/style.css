@@ -502,10 +502,19 @@ h3,
 
 
 .social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.social-links a img {
+    pointer-events: none;
+}
+
+.social-marquee:hover .social-track,
+.social-marquee:focus-within .social-track {
+    animation-play-state: paused;
 }
 
 .social-links img {
@@ -526,11 +535,6 @@ h3,
   overflow: hidden;
 }
 
-
-.social-marquee:hover .social-track,
-.social-marquee:focus-within .social-track {
-  animation-play-state: paused;
-}
 
 @keyframes social-scroll {
   to { transform: translateX(-50%); }
