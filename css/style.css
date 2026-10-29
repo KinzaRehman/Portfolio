@@ -512,9 +512,14 @@ h3,
     pointer-events: none;
 }
 
-.social-marquee:hover .social-track,
-.social-marquee:focus-within .social-track {
+/* Pause when hovering */
+.social-marquee:hover .social-track {
     animation-play-state: paused;
+}
+
+/* Resume when not hovering */
+.social-marquee:not(:hover) .social-track {
+    animation-play-state: running;
 }
 
 .social-links img {
@@ -537,7 +542,12 @@ h3,
 
 
 @keyframes social-scroll {
-  to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-25%);
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
