@@ -2,6 +2,8 @@
 
 Personal portfolio highlighting my software engineering journey, data analytics experience, applied AI work, client websites, and passion projects.
 
+🌐 **Live Demo:** https://kinzarehman.vercel.app/
+
 ![Kinza Rehman Portfolio Preview](images/Portfolio_main.png)
 
 ## Pages
